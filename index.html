@@ -548,7 +548,7 @@
       if (nombres.length === 0) return false;
       Promise.all(nombres.map(nombre => 
         fetch(SCRIPT_URL, {
-          method: "POST",
+          method: "get",
           body: JSON.stringify({
             nombre: nombre,
             confirmado: true
