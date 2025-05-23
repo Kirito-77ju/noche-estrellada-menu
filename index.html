@@ -447,7 +447,8 @@
     </div>
   </section>
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx9AIF8Q7iWfPAvLLPxFeevxxqTB-TMRu0XoUj1oEg3OSWnbWawee0KPDQOKRiNieU_/exec";
+    // PON AQUÍ LA URL DE TU PROXY
+    const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
 
     function updateCountdown() {
       const eventDate = new Date("2025-06-12T19:00:00");
@@ -547,8 +548,8 @@
       }
       if (nombres.length === 0) return false;
       Promise.all(nombres.map(nombre => 
-        fetch(SCRIPT_URL, {
-          method: "get",
+        fetch(PROXY_URL, {
+          method: "POST",
           body: JSON.stringify({
             nombre: nombre,
             confirmado: true
