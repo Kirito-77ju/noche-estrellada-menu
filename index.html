@@ -30,7 +30,7 @@
       min-height: 100vh;
       position: relative;
       z-index: 1;
-      padding-top: 20px;  /* Ahora más arriba */
+      padding-top: 20px;
       padding-bottom: 40px;
     }
     .starry-image {
@@ -41,7 +41,6 @@
       margin: 25px 0 25px 0;
       transition: transform 0.4s cubic-bezier(.4,2,.3,1), box-shadow 0.4s;
       border: 4px solid #ffd23f55;
-      background: #fff9;
     }
     .starry-image:hover {
       transform: scale(1.025) rotate(-1deg);
@@ -79,10 +78,16 @@
       letter-spacing: 2px;
       box-shadow: 0 2px 10px 1px #181c3a26;
     }
-    .menu-btn {
-      margin-top: 18px;
+    .buttons-row {
+      display: flex;
+      gap: 20px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .menu-btn, .asistencia-btn {
       padding: 16px 38px;
-      font-size: 1.25rem;
+      font-size: 1.14rem;
       font-family: 'Quicksand', Arial, sans-serif;
       color: #191c3a;
       background: linear-gradient(90deg, #ffe86b 40%, #fff8b0 100%);
@@ -91,14 +96,48 @@
       cursor: pointer;
       box-shadow: 0 6px 28px 2px #ffd23f33;
       font-weight: bold;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.2px;
       transition: transform 0.25s, box-shadow 0.2s, background 0.3s;
       outline: none;
+      margin-bottom: 6px;
     }
-    .menu-btn:hover {
+    .menu-btn:hover, .asistencia-btn:hover {
       transform: scale(1.07) translateY(-2px);
       background: linear-gradient(90deg, #ffe86b 10%, #fff4d8 90%);
       box-shadow: 0 2px 30px 6px #ffe86b77;
+    }
+    .back-btn {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 99;
+      background: #ffe86b;
+      color: #232861;
+      font-size: 2.2rem;
+      font-family: 'Quicksand', Arial, sans-serif;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 18px 2px #ffd23f55;
+      transition: background 0.18s, transform 0.17s, box-shadow 0.18s;
+      outline: none;
+      opacity: 0.95;
+      animation: btnFloat 1.6s infinite alternate cubic-bezier(.3,1.7,.5,1);
+    }
+    .back-btn:hover {
+      background: #fff4c0;
+      transform: scale(1.12);
+      box-shadow: 0 8px 28px 6px #ffe86b99;
+      opacity: 1;
+    }
+    @keyframes btnFloat {
+      from { transform: translateY(0);}
+      to { transform: translateY(-7px);}
     }
     .menu-section {
       padding: 65px 0 40px 0;
@@ -106,6 +145,7 @@
       border-radius: 36px 36px 0 0;
       margin-top: -32px;
       box-shadow: 0 -4px 32px 0 #10184e55;
+      position: relative;
     }
     .menu-title {
       text-align: center;
@@ -201,63 +241,204 @@
       letter-spacing: 1.5px;
       box-shadow: 0 2px 10px 1px #ffd23f80;
     }
+    /* Overlay para modal */
+    #asistenciaOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,30,0.55);
+      z-index: 998;
+    }
+    /* Estilos para el formulario y el mensaje de gracias */
+    .asistencia-form, .asistencia-gracias {
+      background: rgba(26,28,63,0.98);
+      border-radius: 24px;
+      box-shadow: 0 6px 36px 5px #191c3a52;
+      padding: 32px 24px 26px 24px;
+      position: fixed;
+      z-index: 1000;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      min-width: 330px;
+      max-width: 96vw;
+      color: #ffe86b;
+      animation: asistenciaPop 0.5s;
+    }
+    .asistencia-form.active, .asistencia-gracias.active {
+      display: flex;
+    }
+    @keyframes asistenciaPop {
+      from { opacity: 0; transform: translate(-50%, -60%) scale(0.95);}
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1);}
+    }
+    .asistencia-form label {
+      font-size: 1.13rem;
+      margin-bottom: 10px;
+      color: #ffe86b;
+      font-family: 'Quicksand', Arial, sans-serif;
+    }
+    .asistencia-form input[type="number"],
+    .asistencia-form input[type="text"] {
+      padding: 10px 12px;
+      border-radius: 9px;
+      border: none;
+      font-size: 1.07rem;
+      margin-bottom: 14px;
+      width: 100%;
+      background: #fff;
+      color: #232861;
+      outline: none;
+      box-shadow: 0 1px 4px #0002;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .asistencia-form button {
+      background: #ffe86b;
+      color: #232861;
+      font-weight: bold;
+      font-family: 'Quicksand', Arial, sans-serif;
+      padding: 9px 27px;
+      font-size: 1.1rem;
+      border-radius: 20px;
+      border: none;
+      margin-top: 8px;
+      box-shadow: 0 2px 10px 1px #ffd23f60;
+      cursor: pointer;
+      transition: background .17s, color .17s;
+      display: none;
+    }
+    .asistencia-form button.show {
+      display: block;
+    }
+    .asistencia-form button:hover {
+      background: #fff4c0;
+      color: #132348;
+    }
+    .asistencia-gracias h2 {
+      color: #ffe86b;
+      margin-bottom: 12px;
+      font-family: 'Quicksand', Arial, sans-serif;
+    }
+    .asistencia-info {
+      font-size: 1.07rem;
+      color: #fff;
+      margin-bottom: 12px;
+      margin-top: 4px;
+    }
+    .asistencia-gracias img {
+      width: 95px;
+      margin: 12px 0 4px 0;
+      border-radius: 18px;
+      box-shadow: 0 3px 14px #ffe86b55;
+      background: #fff;
+    }
+    .asistencia-gracias .close-btn {
+      margin-top: 16px;
+      background: #ffe86b;
+      color: #191c3a;
+      font-family: 'Quicksand', Arial, sans-serif;
+      font-weight: bold;
+      padding: 7px 22px;
+      border-radius: 17px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    .asistencia-gracias .close-btn:hover {
+      background: #fff4c0;
+    }
+    .oculto {
+      display: none !important;
+    }
     @media (max-width: 700px) {
       .main-content { padding-top: 10px; }
       .starry-image { width: 98vw; }
       .menu-title { font-size: 1.3rem; }
       .menu-card { min-height: 370px; }
+      .back-btn {
+        right: 12px;
+        bottom: 12px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.6rem;
+      }
+      .asistencia-form, .asistencia-gracias {
+        min-width: unset;
+        padding: 24px 6vw 18px 6vw;
+      }
     }
   </style>
 </head>
 <body>
   <div class="starry-bg"></div>
-  <section class="main-content" id="inicio">
+  <section class="main-content" id="bienvenida">
     <h1>Bienvenidos a La noche estrellada</h1>
-     <img class="starry-image" src="Van_Gogh_-_Starry_Night.jpg" alt="la noche estrellada">
+    <img class="starry-image" src="estrellafugas.png" alt="Estrella fugaz Van Gogh">
     <div class="phrase">Una experiencia celestial de sabores bajo la noche estrellada</div>
     <div class="countdown" id="countdown">Cargando contador...</div>
-    <button class="menu-btn" onclick="scrollToMenu()">Ver menú</button>
+    <div class="buttons-row">
+      <button class="menu-btn" onclick="scrollToMenu()">Ver menú</button>
+      <button class="asistencia-btn" id="btnAsistencia" onclick="abrirAsistencia()">Confirmar asistencia</button>
+    </div>
   </section>
-  <section class="menu-section" id="menu">
+
+  <!-- Overlay para modal -->
+  <div id="asistenciaOverlay"></div>
+
+  <!-- Formulario para confirmar asistencia -->
+  <form class="asistencia-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
+    <label for="numBoletas">¿Cuántas boletas compraste?</label>
+    <input type="number" id="numBoletas" name="numBoletas" min="0" max="5" value="0" required>
+    <div id="nombresBoletas"></div>
+    <button type="submit" id="btnConfirmar">Confirmar</button>
+  </form>
+
+  <!-- Mensaje de agradecimiento -->
+  <div class="asistencia-gracias" id="graciasAsistencia">
+    <h2>¡Gracias por confirmar tu asistencia!</h2>
+    <div class="asistencia-info" id="infoAsistente"></div>
+    <img src="logo.png" alt="Logo Institución">
+    <button class="close-btn" onclick="cerrarGracias()">Cerrar</button>
+  </div>
+
+  <section class="menu-section oculto" id="menu">
+    <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
     <h2 class="menu-title">Menú de 7 tiempos</h2>
     <div class="menu-grid">
-      <!-- Tarjeta 1 -->
+      <!-- Tus tarjetas de menú -->
       <div class="menu-card">
         <img src="ECLIPSE.png" alt="Eclipse" class="menu-img">
         <div class="menu-name">ECLIPSE</div>
         <div class="menu-desc">Bebida refrescante con té negro e infusión de frutos rojos y un toque de hierbabuena.</div>
       </div>
-      <!-- Tarjeta 2 -->
       <div class="menu-card">
         <img src="CONSTELACION.png" alt="Constelación de sabor explosivo" class="menu-img">
         <div class="menu-name">CONSTELACIÓN DE SABOR EXPLOSIVO</div>
         <div class="menu-desc">Queso asado sobre una mermelada de tomate de árbol y mora, bañado con almendra garrapiñada y esferas de menta.</div>
       </div>
-      <!-- Tarjeta 3 -->
       <div class="menu-card">
         <img src="ECOS_DEL_UNIVERSO.png" alt="Ecos del universo" class="menu-img">
         <div class="menu-name">ECOS DEL UNIVERSO</div>
         <div class="menu-desc">Medallón de solomito acompañado de milhoja de papa, mezclum, tomate perla y brócoli morado parrillado.</div>
       </div>
-      <!-- Tarjeta 4 -->
       <div class="menu-card">
         <img src="GALAXIA_DE_COLORES.png" alt="Galaxia de colores" class="menu-img">
         <div class="menu-name">GALAXIA DE COLORES</div>
         <div class="menu-desc">Crema de zanahoria rostizada y crema de remolacha rostizada, acompañada de una espuma blanca de leche de coco y finalizada con brotes frescos.</div>
       </div>
-      <!-- Tarjeta 5 -->
       <div class="menu-card">
         <img src="AURORA.png" alt="Aurora" class="menu-img">
         <div class="menu-name">AURORA</div>
         <div class="menu-desc">Blue Gin decorado con naranja y arándanos.</div>
       </div>
-      <!-- Tarjeta 6 -->
       <div class="menu-card">
         <img src="DULCES_NOCTURNOS.png" alt="Dulces nocturnos" class="menu-img">
         <div class="menu-name">DULCES NOCTURNOS</div>
         <div class="menu-desc">Tarta de mousse de chocolate en base de galleta de mantequilla y nueces, bañado en mora y fresa confitada con un toque de menta y flores.</div>
       </div>
-      <!-- Tarjeta 7 - Próximamente -->
       <div class="menu-card card-soon">
         <div style="flex: 1 1 90px; display: flex; align-items: center; justify-content: center;">
           <span class="soon-label">PRÓXIMAMENTE</span>
@@ -266,9 +447,10 @@
     </div>
   </section>
   <script>
-    // Contador regresivo al 12 de junio
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxi2AWHR-qyiRwTD0l0USVIW45coMpCr-PTve9GqntD0Q795TXVJ-4h-01Af3a0pTBi/exec";
+
     function updateCountdown() {
-      const eventDate = new Date("2025-06-12T19:00:00"); // Puedes ajustar la hora aquí
+      const eventDate = new Date("2025-06-12T19:00:00");
       const now = new Date();
       const diff = eventDate - now;
       const countdownEl = document.getElementById('countdown');
@@ -285,10 +467,128 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Scroll suave al menú
     function scrollToMenu() {
-      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+      const menuSection = document.getElementById('menu');
+      const bienvenidaSection = document.getElementById('bienvenida');
+      bienvenidaSection.classList.add('oculto');
+      menuSection.classList.remove('oculto');
+      menuSection.scrollIntoView({ behavior: 'smooth' });
     }
+    function volverInicio() {
+      const menuSection = document.getElementById('menu');
+      const bienvenidaSection = document.getElementById('bienvenida');
+      menuSection.classList.add('oculto');
+      bienvenidaSection.classList.remove('oculto');
+      bienvenidaSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // MODAL asistencia
+    function abrirAsistencia() {
+      document.getElementById('formAsistencia').classList.add('active');
+      document.getElementById('asistenciaOverlay').style.display = "block";
+      document.getElementById('numBoletas').value = 0;
+      generarCamposNombres();
+      document.getElementById('numBoletas').focus();
+    }
+    function cerrarGracias() {
+      document.getElementById('graciasAsistencia').classList.remove('active');
+      document.getElementById('asistenciaOverlay').style.display = "none";
+    }
+    document.getElementById('asistenciaOverlay').onclick = function() {
+      document.getElementById('formAsistencia').classList.remove('active');
+      document.getElementById('graciasAsistencia').classList.remove('active');
+      this.style.display = "none";
+    };
+
+    // Dinámico para los nombres
+    document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
+
+    function generarCamposNombres() {
+      let cantidad = parseInt(document.getElementById('numBoletas').value) || 0;
+      if(cantidad < 0) cantidad = 0;
+      if(cantidad > 5) cantidad = 5;
+      document.getElementById('numBoletas').value = cantidad;
+      const container = document.getElementById('nombresBoletas');
+      const btnConfirmar = document.getElementById('btnConfirmar');
+      container.innerHTML = '';
+      btnConfirmar.classList.remove('show');
+      if (cantidad > 0) {
+        for (let i = 1; i <= cantidad; i++) {
+          const label = document.createElement('label');
+          label.setAttribute('for', `nombreAsistente_${i}`);
+          label.textContent = `Nombre de la persona ${i}:`;
+          const input = document.createElement('input');
+          input.type = "text";
+          input.id = `nombreAsistente_${i}`;
+          input.name = `nombreAsistente_${i}`;
+          input.required = true;
+          input.maxLength = 50;
+          input.placeholder = "Nombre completo...";
+          container.appendChild(label);
+          container.appendChild(input);
+        }
+        btnConfirmar.classList.add('show');
+      }
+    }
+
+    // Enviar asistencia: guarda todos los nombres (uno por fila)
+    function enviarAsistencia(e) {
+      e.preventDefault();
+      const cantidad = Math.min(5, parseInt(document.getElementById('numBoletas').value) || 0);
+      let nombres = [];
+      for (let i = 1; i <= cantidad; i++) {
+        const val = (document.getElementById(`nombreAsistente_${i}`).value || '').trim();
+        if (val.length < 2) {
+          alert("Por favor, ingresa un nombre válido para la persona " + i);
+          document.getElementById(`nombreAsistente_${i}`).focus();
+          return false;
+        }
+        nombres.push(val);
+      }
+      if (nombres.length === 0) return false;
+      Promise.all(nombres.map(nombre => 
+        fetch(SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify({
+            nombre: nombre,
+            confirmado: true
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+        .then(r => r.json())
+      )).then(results => {
+        if(results.every(r => r.result === "ok")) {
+          // localStorage.setItem("asistenciaEventoEstrellada", nombres.join('|')); // Lo desactivo para pruebas
+          document.getElementById('formAsistencia').classList.remove('active');
+          document.getElementById('asistenciaOverlay').style.display = "none";
+          const info = `
+            <b>Nombres registrados:</b><br>
+            ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
+            <br><b>Fecha del evento:</b> 12 de junio<br>
+            <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín<br>
+            <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
+          `;
+          document.getElementById('infoAsistente').innerHTML = info;
+          document.getElementById('graciasAsistencia').classList.add('active');
+        } else {
+          alert("Ocurrió un error al registrar tu confirmación. Intenta de nuevo.");
+        }
+      }).catch(() => {
+        alert("No se pudo enviar tu confirmación. Revisa tu conexión e inténtalo más tarde.");
+      });
+      return false;
+    }
+
+    // ESC para cerrar modales
+    document.addEventListener('keydown', function(e) {
+      if(e.key === "Escape") {
+        cerrarGracias();
+        document.getElementById('formAsistencia').classList.remove('active');
+        document.getElementById('asistenciaOverlay').style.display = "none";
+      }
+    });
   </script>
 </body>
 </html>
