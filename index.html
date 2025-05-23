@@ -30,7 +30,7 @@
       min-height: 100vh;
       position: relative;
       z-index: 1;
-      padding-top: 60px;
+      padding-top: 20px;  /* Ahora más arriba */
       padding-bottom: 40px;
     }
     .starry-image {
@@ -202,7 +202,7 @@
       box-shadow: 0 2px 10px 1px #ffd23f80;
     }
     @media (max-width: 700px) {
-      .main-content { padding-top: 20px; }
+      .main-content { padding-top: 10px; }
       .starry-image { width: 98vw; }
       .menu-title { font-size: 1.3rem; }
       .menu-card { min-height: 370px; }
@@ -213,8 +213,7 @@
   <div class="starry-bg"></div>
   <section class="main-content" id="inicio">
     <h1>Bienvenidos a La noche estrellada</h1>
-    <!-- Imagen de la noche estrellada justo debajo del título -->
-    <img class="starry-image" src="https://upload.wikimedia.org/wikipedia/commons/5/57/Vincent_van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="La noche estrellada">
+     <img class="starry-image" src="Van_Gogh_-_Starry_Night.jpg" alt="la noche estrellada">
     <div class="phrase">Una experiencia celestial de sabores bajo la noche estrellada</div>
     <div class="countdown" id="countdown">Cargando contador...</div>
     <button class="menu-btn" onclick="scrollToMenu()">Ver menú</button>
@@ -222,7 +221,6 @@
   <section class="menu-section" id="menu">
     <h2 class="menu-title">Menú de 7 tiempos</h2>
     <div class="menu-grid">
-
       <!-- Tarjeta 1 -->
       <div class="menu-card">
         <img src="ECLIPSE.png" alt="Eclipse" class="menu-img">
