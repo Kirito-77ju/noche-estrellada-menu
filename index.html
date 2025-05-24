@@ -30,16 +30,10 @@
       min-height: 100vh;
       position: relative;
       z-index: 1;
-      padding-top: 20px;
+      padding-top: 24px;
       padding-bottom: 40px;
       padding-left: 18px;
       padding-right: 18px;
-    }
-    @media (max-width: 700px) {
-      .main-content {
-        padding-left: 3vw;
-        padding-right: 3vw;
-      }
     }
     .starry-image {
       width: 380px;
@@ -154,10 +148,12 @@
       margin-top: -32px;
       box-shadow: 0 -4px 32px 0 #10184e55;
       position: relative;
+      padding-left: 14px;
+      padding-right: 14px;
     }
     .menu-title {
       text-align: center;
-      font-size: 2.7rem;
+      font-size: 2.45rem;
       font-family: 'Quicksand', Arial, sans-serif;
       color: #ffe86b;
       letter-spacing: 2px;
@@ -165,18 +161,13 @@
       margin-top: 0;
       text-shadow: 0 6px 20px #0008;
     }
-    @media (max-width: 700px) {
-      .menu-title {
-        font-size: 2.3rem;
-      }
-    }
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 32px;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 10px;
       position: relative;
       z-index: 2;
     }
@@ -254,28 +245,46 @@
       letter-spacing: 1.5px;
       box-shadow: 0 2px 10px 1px #ffd23f80;
     }
-
-    /* ==== Confirmación y Gracias (ajustado) ==== */
-    .asistencia-form, .asistencia-gracias {
-      background: rgba(26,28,63,0.98);
-      border-radius: 24px;
-      box-shadow: 0 6px 36px 5px #191c3a52;
-      padding: 32px 24px 26px 24px;
-      position: relative;
-      display: flex;
+    /* Overlay para modal */
+    #asistenciaOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,10,30,0.55);
+      z-index: 998;
+    }
+    /* Estilos para el formulario de confirmación */
+    .asistencia-form {
+      background: rgba(26,28,63,0.97);
+      border-radius: 26px;
+      box-shadow: 0 6px 36px 5px #191c3a36;
+      padding: 30px 20px 18px 20px;
+      position: fixed;
+      z-index: 1000;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
       flex-direction: column;
       align-items: center;
       min-width: 330px;
-      max-width: 430px;
+      max-width: 96vw;
       color: #ffe86b;
-      margin-left: 18px;
-      margin-right: 18px;
+      animation: asistenciaPop 0.5s;
+    }
+    .asistencia-form.active {
+      display: flex;
+    }
+    @keyframes asistenciaPop {
+      from { opacity: 0; transform: translate(-50%, -60%) scale(0.95);}
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1);}
     }
     .asistencia-form label {
       font-size: 1.13rem;
       margin-bottom: 10px;
       color: #ffe86b;
       font-family: 'Quicksand', Arial, sans-serif;
+      align-self: flex-start;
     }
     .asistencia-form input[type="number"],
     .asistencia-form input[type="text"] {
@@ -291,6 +300,7 @@
       box-shadow: 0 1px 4px #0002;
       font-family: 'Montserrat', Arial, sans-serif;
       box-sizing: border-box;
+      margin-top: 2px;
     }
     .asistencia-form button {
       background: #ffe86b;
@@ -314,41 +324,94 @@
       background: #fff4c0;
       color: #132348;
     }
-    .asistencia-gracias h2 {
+
+    /* NUEVO: Estilos solo para la sección de gracias */
+    .gracias-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 62vh;
+      max-width: 420px;
+      margin: 38px auto 0 auto;
+      padding: 36px 22px 30px 22px;
+      background: rgba(24, 28, 58, 0.97);
+      border-radius: 32px;
+      box-shadow: 0 8px 36px 8px #181c3a30;
       color: #ffe86b;
-      margin-bottom: 12px;
+      text-align: center;
+      position: relative;
+      border: 2.5px solid #ffe86b80;
+      animation: graciasPop 0.6s;
+    }
+    @keyframes graciasPop {
+      from { opacity: 0; transform: translateY(30px) scale(0.95);}
+      to { opacity: 1; transform: translateY(0) scale(1);}
+    }
+    .gracias-icono {
+      font-size: 2.8rem;
+      margin-bottom: 7px;
+      color: #ffe86b;
+      filter: drop-shadow(0 2px 10px #ffe86b66);
+      animation: sparkle 2.1s infinite alternate cubic-bezier(.4,2,.4,1);
+    }
+    @keyframes sparkle {
+      from { transform: scale(1) rotate(-7deg);}
+      to { transform: scale(1.14) rotate(8deg);}
+    }
+    .gracias-section h2 {
+      font-size: 2.12rem;
+      color: #ffe86b;
+      margin-bottom: 14px;
       font-family: 'Quicksand', Arial, sans-serif;
+      letter-spacing: 1.2px;
+      text-shadow: 0 4px 18px #0c133366;
     }
-    .asistencia-info {
-      font-size: 1.07rem;
+    .gracias-section .asistencia-info {
+      font-size: 1.12rem;
       color: #fff;
-      margin-bottom: 12px;
-      margin-top: 4px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 17px 12px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      box-shadow: 0 2px 10px 2px #181c3a14;
     }
-    .asistencia-gracias img {
-      width: 95px;
-      margin: 12px 0 4px 0;
-      border-radius: 18px;
+    .gracias-section img {
+      width: 96px;
+      margin: 20px 0 9px 0;
+      border-radius: 22px;
       box-shadow: 0 3px 14px #ffe86b55;
       background: #fff;
+      border: 2px solid #ffe86b;
     }
-    .asistencia-gracias .close-btn {
+    .gracias-section .close-btn {
       margin-top: 16px;
-      background: #ffe86b;
+      background: linear-gradient(90deg, #ffe86b 60%, #fff8b0 100%);
       color: #191c3a;
       font-family: 'Quicksand', Arial, sans-serif;
+      font-size: 1.13rem;
       font-weight: bold;
-      padding: 7px 22px;
-      border-radius: 17px;
+      padding: 10px 32px;
+      border-radius: 20px;
       border: none;
+      box-shadow: 0 2px 10px 2px #ffd23f30;
       cursor: pointer;
-      transition: background 0.18s;
+      transition: background 0.18s, color 0.18s, transform 0.13s;
     }
-    .asistencia-gracias .close-btn:hover {
+    .gracias-section .close-btn:hover {
       background: #fff4c0;
+      color: #191c3a;
+      transform: scale(1.08);
+    }
+    .oculto {
+      display: none !important;
     }
     @media (max-width: 700px) {
+      .main-content { padding-left: 6vw; padding-right: 6vw; }
       .starry-image { width: 98vw; }
+      .menu-title { font-size: 1.43rem; }
       .menu-card { min-height: 370px; }
       .back-btn {
         right: 12px;
@@ -357,19 +420,15 @@
         height: 44px;
         font-size: 1.6rem;
       }
-      .main-content {
-        padding-left: 3vw;
-        padding-right: 3vw;
-      }
-      .asistencia-form, .asistencia-gracias {
+      .asistencia-form, .gracias-section {
         min-width: unset;
-        max-width: 94vw;
-        margin-left: 3vw;
-        margin-right: 3vw;
-        padding: 24px 5vw 18px 5vw;
+        padding: 10vw 2vw 6vw 2vw;
+        max-width: 96vw;
       }
+      .gracias-section h2 { font-size: 1.21rem;}
+      .gracias-section img { width: 62px;}
+      .gracias-section .close-btn { font-size: 1rem; padding: 8px 18px; }
     }
-    .oculto { display: none !important; }
   </style>
 </head>
 <body>
@@ -380,30 +439,30 @@
     <div class="phrase">Una experiencia celestial de sabores bajo la noche estrellada</div>
     <div class="countdown" id="countdown">Cargando contador...</div>
     <div class="buttons-row">
-      <button class="menu-btn" onclick="mostrarMenu()">Ver menú</button>
-      <button class="asistencia-btn" onclick="mostrarAsistencia()">Confirmar asistencia</button>
+      <button class="menu-btn" onclick="scrollToMenu()">Ver menú</button>
+      <button class="asistencia-btn" id="btnAsistencia" onclick="abrirAsistencia()">Confirmar asistencia</button>
     </div>
   </section>
 
-  <!-- Sección de Confirmar Asistencia -->
-  <section id="asistencia" class="oculto">
-    <form class="asistencia-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
-      <label for="numBoletas">¿Cuántas boletas compraste?</label>
-      <input type="number" id="numBoletas" name="numBoletas" min="1" max="5" placeholder="0" required>
-      <div id="nombresBoletas"></div>
-      <button type="submit" id="btnConfirmar">Confirmar</button>
-    </form>
-  </section>
+  <!-- Overlay para modal -->
+  <div id="asistenciaOverlay"></div>
 
-  <!-- Mensaje de agradecimiento -->
-  <section id="gracias" class="oculto">
-    <div class="asistencia-gracias">
-      <h2>¡Gracias por confirmar tu asistencia!</h2>
-      <div class="asistencia-info" id="infoAsistente"></div>
-      <img src="logo.png" alt="Logo Institución">
-      <button class="close-btn" onclick="volverInicio()">Cerrar</button>
-    </div>
-  </section>
+  <!-- Formulario para confirmar asistencia -->
+  <form class="asistencia-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
+    <label for="numBoletas">¿Cuántas boletas compraste?</label>
+    <input type="number" id="numBoletas" name="numBoletas" min="1" max="5" value="" placeholder="Ingresa un número de 1 a 5" required>
+    <div id="nombresBoletas"></div>
+    <button type="submit" id="btnConfirmar">Confirmar</button>
+  </form>
+
+  <!-- SECCIÓN DE GRACIAS MEJORADA -->
+  <div class="asistencia-gracias gracias-section oculto" id="gracias">
+    <div class="gracias-icono">&#10024;</div>
+    <h2>¡Gracias por confirmar tu asistencia!</h2>
+    <div class="asistencia-info" id="infoAsistente"></div>
+    <img src="logo.png" alt="Logo Institución">
+    <button class="close-btn" onclick="volverInicio()">Cerrar</button>
+  </div>
 
   <section class="menu-section oculto" id="menu">
     <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
@@ -447,7 +506,7 @@
     </div>
   </section>
   <script>
-    // URL de tu proxy
+    // URL DE TU PROXY FUNCIONAL
     const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
 
     function updateCountdown() {
@@ -468,42 +527,44 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Lógica para mostrar secciones
-    function mostrarMenu() {
-      ocultarTodo();
+    function scrollToMenu() {
+      document.getElementById('bienvenida').classList.add('oculto');
       document.getElementById('menu').classList.remove('oculto');
-      window.scrollTo(0,0);
+      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
     }
-    function mostrarAsistencia() {
-      ocultarTodo();
-      document.getElementById('asistencia').classList.remove('oculto');
+    function volverInicio() {
+      document.getElementById('menu').classList.add('oculto');
+      document.getElementById('gracias').classList.add('oculto');
+      document.getElementById('bienvenida').classList.remove('oculto');
+      document.getElementById('bienvenida').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // MODAL asistencia
+    function abrirAsistencia() {
+      document.getElementById('formAsistencia').classList.add('active');
+      document.getElementById('asistenciaOverlay').style.display = "block";
       document.getElementById('numBoletas').value = '';
       generarCamposNombres();
       document.getElementById('numBoletas').focus();
-      window.scrollTo(0,0);
     }
-    function volverInicio() {
-      ocultarTodo();
-      document.getElementById('bienvenida').classList.remove('oculto');
-      window.scrollTo(0,0);
-    }
-    function ocultarTodo() {
-      document.getElementById('bienvenida').classList.add('oculto');
-      document.getElementById('menu').classList.add('oculto');
-      document.getElementById('asistencia').classList.add('oculto');
+    function cerrarGracias() {
       document.getElementById('gracias').classList.add('oculto');
+      document.getElementById('asistenciaOverlay').style.display = "none";
     }
+    document.getElementById('asistenciaOverlay').onclick = function() {
+      document.getElementById('formAsistencia').classList.remove('active');
+      document.getElementById('gracias').classList.add('oculto');
+      this.style.display = "none";
+    };
 
     // Dinámico para los nombres
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
-    });
+    document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
 
     function generarCamposNombres() {
       let cantidad = parseInt(document.getElementById('numBoletas').value) || 0;
-      if(cantidad < 1) cantidad = 0;
+      if(cantidad < 1) cantidad = 1;
       if(cantidad > 5) cantidad = 5;
-      document.getElementById('numBoletas').value = cantidad;
+      document.getElementById('numBoletas').value = cantidad ? cantidad : '';
       const container = document.getElementById('nombresBoletas');
       const btnConfirmar = document.getElementById('btnConfirmar');
       container.innerHTML = '';
@@ -527,7 +588,7 @@
       }
     }
 
-    // Enviar asistencia: guarda todos los nombres (uno por fila)
+    // Enviar asistencia
     function enviarAsistencia(e) {
       e.preventDefault();
       const cantidad = Math.min(5, parseInt(document.getElementById('numBoletas').value) || 0);
@@ -542,7 +603,7 @@
         nombres.push(val);
       }
       if (nombres.length === 0) return false;
-      Promise.all(nombres.map(nombre =>
+      Promise.all(nombres.map(nombre => 
         fetch(PROXY_URL, {
           method: "POST",
           body: JSON.stringify({
@@ -556,8 +617,18 @@
         .then(r => r.json())
       )).then(results => {
         if(results.every(r => r.result === "ok")) {
-          document.getElementById('formAsistencia').reset();
-          mostrarGracias(nombres);
+          document.getElementById('formAsistencia').classList.remove('active');
+          document.getElementById('asistenciaOverlay').style.display = "none";
+          const info = `
+            <b>Nombres registrados:</b><br>
+            ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
+            <br><b>Fecha del evento:</b> 12 de junio<br>
+            <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín<br>
+            <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
+          `;
+          document.getElementById('infoAsistente').innerHTML = info;
+          document.getElementById('gracias').classList.remove('oculto');
+          document.getElementById('gracias').scrollIntoView({ behavior: 'smooth' });
         } else {
           alert("Ocurrió un error al registrar tu confirmación. Intenta de nuevo.");
         }
@@ -567,19 +638,14 @@
       return false;
     }
 
-    function mostrarGracias(nombres) {
-      ocultarTodo();
-      const info = `
-        <b>Nombres registrados:</b><br>
-        ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
-        <br><b>Fecha del evento:</b> 12 de junio<br>
-        <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín<br>
-        <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
-      `;
-      document.getElementById('infoAsistente').innerHTML = info;
-      document.getElementById('gracias').classList.remove('oculto');
-      window.scrollTo(0,0);
-    }
+    // ESC para cerrar modales
+    document.addEventListener('keydown', function(e) {
+      if(e.key === "Escape") {
+        cerrarGracias();
+        document.getElementById('formAsistencia').classList.remove('active');
+        document.getElementById('asistenciaOverlay').style.display = "none";
+      }
+    });
   </script>
 </body>
 </html>
