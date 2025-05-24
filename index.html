@@ -30,10 +30,8 @@
       min-height: 100vh;
       position: relative;
       z-index: 1;
-      padding-top: 28px;
-      padding-bottom: 40px;
-      padding-left: 5vw;
-      padding-right: 5vw;
+      padding: 24px 4vw 36px 4vw;
+      box-sizing: border-box;
     }
     .starry-image {
       width: 380px;
@@ -55,6 +53,7 @@
       letter-spacing: 1px;
       margin-bottom: 0.4em;
       text-shadow: 0 4px 20px #0c1333aa;
+      text-align: center;
     }
     .phrase {
       font-size: 1.2rem;
@@ -108,15 +107,16 @@
       background: linear-gradient(90deg, #ffe86b 10%, #fff4d8 90%);
       box-shadow: 0 2px 30px 6px #ffe86b77;
     }
+    /* MENÚ */
     .menu-section {
-      padding: 65px 0 40px 0;
+      padding: 60px 4vw 40px 4vw;
       background: linear-gradient(120deg, #232861cc 40%, #2f3d7aee 100%);
       border-radius: 36px 36px 0 0;
       margin-top: -32px;
       box-shadow: 0 -4px 32px 0 #10184e55;
       position: relative;
-      padding-left: 6vw;
-      padding-right: 6vw;
+      min-height: 60vh;
+      box-sizing: border-box;
     }
     .menu-title {
       text-align: center;
@@ -134,9 +134,10 @@
       gap: 32px;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 5px;
+      padding: 0 6vw;
       position: relative;
       z-index: 2;
+      box-sizing: border-box;
     }
     .menu-card {
       background: rgba(26,28,63,0.95);
@@ -151,6 +152,7 @@
       border: 2.5px solid #ffe86b80;
       transition: transform 0.24s cubic-bezier(.4,2,.3,1), box-shadow 0.2s;
       min-height: 450px;
+      box-sizing: border-box;
     }
     .menu-card:hover {
       transform: scale(1.025) translateY(-8px);
@@ -214,7 +216,7 @@
     }
     .back-btn {
       position: fixed;
-      right: 24px;
+      right: 20px;
       bottom: 24px;
       z-index: 99;
       background: #ffe86b;
@@ -245,164 +247,139 @@
       from { transform: translateY(0);}
       to { transform: translateY(-7px);}
     }
+    /* SECCIONES TARJETA (CONFIRMAR/GRACIAS) */
     .seccion-tarjeta {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       min-height: 100vh;
-      padding: 0 4vw;
-      background: rgba(20, 24, 50, 0.98);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 4vw;
+      background: linear-gradient(120deg, #191d36 40%, #283770 100%);
+      box-sizing: border-box;
     }
     .card-form, .card-gracias {
-      background: #212656;
-      border-radius: 26px;
-      box-shadow: 0 6px 32px 6px #13174144;
-      padding: 38px 30px 30px 30px;
-      max-width: 390px;
-      width: 100%;
-      color: #ffe86b;
-      margin: 0 auto;
+      background: rgba(26,28,63,0.99);
+      border-radius: 28px;
+      box-shadow: 0 8px 32px 6px #191c3a52;
+      padding: 40px 6vw 32px 6vw;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-width: 320px;
+      max-width: 410px;
+      width: 100%;
+      color: #ffe86b;
+      gap: 10px;
+      box-sizing: border-box;
+      border: 2px solid #ffe86b40;
     }
     .card-form h2, .card-gracias h2 {
       color: #ffe86b;
+      margin-bottom: 15px;
       font-family: 'Quicksand', Arial, sans-serif;
       font-size: 2rem;
-      margin-bottom: 12px;
       text-align: center;
+      margin-top: 0;
     }
-    .card-form label {
-      font-size: 1.1rem;
+    .card-form label, .card-gracias label {
+      font-size: 1.15rem;
       color: #ffe86b;
-      margin: 0 0 7px 0;
-      align-self: flex-start;
+      font-family: 'Quicksand', Arial, sans-serif;
+      margin-top: 10px;
     }
     .card-form input[type="number"],
     .card-form input[type="text"] {
       padding: 10px 12px;
-      border-radius: 8px;
+      border-radius: 9px;
       border: none;
-      font-size: 1rem;
-      margin-bottom: 17px;
+      font-size: 1.07rem;
+      margin-bottom: 16px;
       width: 100%;
       background: #fff;
       color: #232861;
       outline: none;
       box-shadow: 0 1px 4px #0002;
       font-family: 'Montserrat', Arial, sans-serif;
-      margin-top: 0;
+      box-sizing: border-box;
+      margin-top: 2px;
     }
-    .card-form button {
+    .card-form button, .card-gracias .close-btn {
       background: #ffe86b;
       color: #232861;
       font-weight: bold;
       font-family: 'Quicksand', Arial, sans-serif;
-      padding: 10px 24px;
-      font-size: 1.12rem;
-      border-radius: 18px;
+      padding: 10px 27px;
+      font-size: 1.1rem;
+      border-radius: 20px;
       border: none;
       margin-top: 8px;
       box-shadow: 0 2px 10px 1px #ffd23f60;
       cursor: pointer;
       transition: background .17s, color .17s;
-      display: block;
-      width: 100%;
+      margin-bottom: 0;
     }
-    .card-form button:hover {
+    .card-form button:hover, .card-gracias .close-btn:hover {
       background: #fff4c0;
       color: #132348;
     }
-    /* Sección de Gracias Mejorada */
-    .card-gracias {
-      text-align: center;
-      padding-bottom: 18px;
-      background: #232861;
-      color: #fff;
-      border: 2.5px solid #ffe86b;
-      box-shadow: 0 6px 24px 4px #191c3a45;
-    }
     .icon-check {
-      display: inline-block;
-      font-size: 2.8rem;
-      color: #7cf86c;
-      margin-bottom: 12px;
-      margin-top: 0;
+      font-size: 2.7rem;
+      margin-bottom: 6px;
+      margin-top: 8px;
+      color: #8cff80;
     }
     .asistencia-info {
-      width: 100%;
-      margin: 22px 0 8px 0;
-      text-align: left;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-    .asistencia-info .info-item {
-      background: #232861cc;
-      padding: 13px 17px;
-      border-radius: 13px;
-      margin: 0 0 0 0;
-      border-left: 5px solid #ffe86b;
-      color: #fff;
-      font-size: 1.06rem;
-      line-height: 1.45;
-      box-shadow: 0 2px 6px #181c3a30;
-    }
-    .asistencia-info .info-item b {
+      font-size: 1.11rem;
       color: #ffe86b;
-      font-weight: 700;
+      margin-bottom: 10px;
+      margin-top: 12px;
+      text-align: left;
+      width: 100%;
+      line-height: 1.55;
+    }
+    .info-item {
+      background: rgba(30,30,40,0.28);
+      border-radius: 12px;
+      padding: 8px 13px 7px 13px;
+      margin-bottom: 13px;
+      color: #ffe86b;
+      box-shadow: 0 2px 9px #10144e15;
     }
     .card-gracias img {
-      width: 90px;
-      margin: 18px 0 8px 0;
+      width: 95px;
+      margin: 18px 0 10px 0;
       border-radius: 18px;
       box-shadow: 0 3px 14px #ffe86b55;
       background: #fff;
+      border: 1.8px solid #ffe86b70;
     }
-    .close-btn {
-      margin-top: 18px;
-      background: #ffe86b;
-      color: #191c3a;
-      font-family: 'Quicksand', Arial, sans-serif;
-      font-weight: bold;
-      padding: 9px 22px;
-      border-radius: 16px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.18s;
-      font-size: 1rem;
-    }
-    .close-btn:hover {
-      background: #fff4c0;
-    }
-    .oculto {
-      display: none !important;
-    }
+    .oculto { display: none !important; }
     @media (max-width: 700px) {
-      .main-content { padding-left: 2vw; padding-right: 2vw; }
-      .menu-section { padding-left: 2vw; padding-right: 2vw; }
-      .seccion-tarjeta { padding: 0 3vw; }
-      .menu-title { font-size: 1.35rem; }
-      .menu-card { min-height: 370px; }
+      .main-content { padding-left: 4vw; padding-right: 4vw;}
+      .menu-section { padding-left: 4vw; padding-right: 4vw;}
+      .menu-title { font-size: 2rem; }
+      .menu-grid { padding-left: 2vw; padding-right: 2vw;}
       .back-btn {
-        right: 12px;
-        bottom: 12px;
+        right: 10px;
+        bottom: 10px;
         width: 44px;
         height: 44px;
         font-size: 1.6rem;
       }
+      .seccion-tarjeta {
+        padding: 24px 3vw;
+      }
       .card-form, .card-gracias {
         min-width: unset;
-        padding: 22px 5vw 18px 5vw;
+        max-width: 98vw;
+        padding-left: 4vw;
+        padding-right: 4vw;
       }
-      .asistencia-info .info-item { padding: 11px 8px; }
     }
   </style>
 </head>
 <body>
   <div class="starry-bg"></div>
-
   <!-- BIENVENIDA -->
   <section class="main-content" id="bienvenida">
     <h1>Bienvenidos a La noche estrellada</h1>
@@ -411,12 +388,11 @@
     <div class="countdown" id="countdown">Cargando contador...</div>
     <div class="buttons-row">
       <button class="menu-btn" onclick="irASeccion('menu')">Ver menú</button>
-      <button class="asistencia-btn" id="btnAsistencia" onclick="irASeccion('confirmacion')">Confirmar asistencia</button>
+      <button class="asistencia-btn" onclick="irASeccion('confirmacion')">Confirmar asistencia</button>
     </div>
   </section>
-
-  <!-- MENU -->
-  <section class="menu-section oculto" id="menu">
+  <!-- MENÚ -->
+  <section id="menu" class="menu-section oculto">
     <h2 class="menu-title">Menú de 7 tiempos</h2>
     <div class="menu-grid">
       <div class="menu-card">
@@ -457,30 +433,28 @@
     </div>
     <button class="back-btn" onclick="irASeccion('bienvenida')" title="Volver al inicio">&#8592;</button>
   </section>
-
   <!-- CONFIRMACIÓN -->
   <section id="confirmacion" class="seccion-tarjeta oculto">
     <form class="card-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
       <h2>Confirmar asistencia</h2>
-      <label for="numBoletas">¿Cuántas boletas compraste?</label>
-      <input type="number" id="numBoletas" name="numBoletas" min="1" max="5" value="" required placeholder="Cantidad de boletas (1-5)">
+      <label for="numBoletas">¿Cuántas boletas compraste? (1 a 5)</label>
+      <input type="number" id="numBoletas" name="numBoletas" min="1" max="5" placeholder="Ejemplo: 2">
       <div id="nombresBoletas"></div>
       <button type="submit" id="btnConfirmar">Confirmar</button>
     </form>
   </section>
-
   <!-- GRACIAS -->
   <section id="gracias" class="seccion-tarjeta oculto">
     <div class="card-gracias">
-      <div class="icon-check">✔️</div>
+      <span class="icon-check">✔️</span>
       <h2>¡Gracias por confirmar tu asistencia!</h2>
       <div class="asistencia-info" id="infoAsistente"></div>
       <img src="logo.png" alt="Logo Institución">
       <button class="close-btn" onclick="irASeccion('bienvenida')">Cerrar</button>
     </div>
   </section>
-
   <script>
+    // URL de tu proxy (no la cambies)
     const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
 
     function updateCountdown() {
@@ -501,32 +475,37 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    function irASeccion(seccion) {
-      const secciones = ['bienvenida', 'menu', 'confirmacion', 'gracias'];
-      secciones.forEach(id => {
-        const s = document.getElementById(id);
-        if (s) s.classList.add('oculto');
+    // Cambiar de sección
+    function irASeccion(id) {
+      ["bienvenida", "menu", "confirmacion", "gracias"].forEach(sid => {
+        const seccion = document.getElementById(sid);
+        if (seccion) seccion.classList.add('oculto');
       });
-      const target = document.getElementById(seccion);
-      if (target) {
-        target.classList.remove('oculto');
-        window.scrollTo({top: 0, behavior: 'smooth'});
+      const mostrar = document.getElementById(id);
+      if (mostrar) {
+        mostrar.classList.remove('oculto');
+        mostrar.scrollIntoView({ behavior: "smooth" });
       }
-      if (seccion === "confirmacion") {
-        document.getElementById('numBoletas').value = '';
+      // Al abrir confirmacion limpia campos
+      if(id === "confirmacion") {
+        document.getElementById('formAsistencia').reset();
         generarCamposNombres();
       }
     }
 
+    // Dinámico para los nombres (ajuste limpio)
     document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
 
     function generarCamposNombres() {
-      let cantidad = parseInt(document.getElementById('numBoletas').value) || '';
-      if (cantidad < 1) cantidad = 1;
+      let val = document.getElementById('numBoletas').value.trim();
+      // Permite vacío y sólo números enteros positivos
+      let cantidad = (val === '' || isNaN(val)) ? '' : parseInt(val, 10);
       if (cantidad > 5) cantidad = 5;
-      document.getElementById('numBoletas').value = cantidad ? cantidad : '';
+      if (cantidad < 1 || val === '') cantidad = '';
+      document.getElementById('numBoletas').value = val === '' ? '' : cantidad;
       const container = document.getElementById('nombresBoletas');
       container.innerHTML = '';
+      if (!cantidad) return;
       for (let i = 1; i <= cantidad; i++) {
         const label = document.createElement('label');
         label.setAttribute('for', `nombreAsistente_${i}`);
@@ -543,9 +522,10 @@
       }
     }
 
+    // Enviar asistencia: guarda todos los nombres (uno por fila)
     function enviarAsistencia(e) {
       e.preventDefault();
-      const cantidad = Math.min(5, Math.max(1, parseInt(document.getElementById('numBoletas').value) || 1));
+      const cantidad = Math.min(5, parseInt(document.getElementById('numBoletas').value) || 0);
       let nombres = [];
       for (let i = 1; i <= cantidad; i++) {
         const val = (document.getElementById(`nombreAsistente_${i}`).value || '').trim();
@@ -557,7 +537,7 @@
         nombres.push(val);
       }
       if (nombres.length === 0) return false;
-      Promise.all(nombres.map(nombre =>
+      Promise.all(nombres.map(nombre => 
         fetch(PROXY_URL, {
           method: "POST",
           body: JSON.stringify({
@@ -571,24 +551,16 @@
         .then(r => r.json())
       )).then(results => {
         if(results.every(r => r.result === "ok")) {
-          irASeccion('gracias');
-          // Separación y visual elegante para detalles:
+          // localStorage.setItem("asistenciaEventoEstrellada", nombres.join('|')); // Lo desactivo para pruebas
           const info = `
-            <div class="info-item">
-              <b>Nombres registrados:</b><br>
-              ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
-            </div>
-            <div class="info-item">
-              <b>Fecha del evento:</b> 12 de junio
-            </div>
-            <div class="info-item">
-              <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín
-            </div>
-            <div class="info-item">
-              <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
-            </div>
+            <div class="info-item"><b>Nombres registrados:</b><br>
+            ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}</div>
+            <div class="info-item"><b>Fecha del evento:</b> 12 de junio</div>
+            <div class="info-item"><b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín</div>
+            <div class="info-item"><b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS</div>
           `;
           document.getElementById('infoAsistente').innerHTML = info;
+          irASeccion("gracias");
         } else {
           alert("Ocurrió un error al registrar tu confirmación. Intenta de nuevo.");
         }
