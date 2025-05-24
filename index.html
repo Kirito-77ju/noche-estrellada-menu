@@ -314,9 +314,14 @@
       background: #fff4c0;
       color: #132348;
     }
+    /* Sección de Gracias Mejorada */
     .card-gracias {
       text-align: center;
       padding-bottom: 18px;
+      background: #232861;
+      color: #fff;
+      border: 2.5px solid #ffe86b;
+      box-shadow: 0 6px 24px 4px #191c3a45;
     }
     .icon-check {
       display: inline-block;
@@ -325,13 +330,30 @@
       margin-bottom: 12px;
       margin-top: 0;
     }
-    .asistencia-info > div {
-      margin-bottom: 18px;
+    .asistencia-info {
+      width: 100%;
+      margin: 22px 0 8px 0;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
     }
-    .asistencia-info b {
+    .asistencia-info .info-item {
+      background: #232861cc;
+      padding: 13px 17px;
+      border-radius: 13px;
+      margin: 0 0 0 0;
+      border-left: 5px solid #ffe86b;
+      color: #fff;
+      font-size: 1.06rem;
+      line-height: 1.45;
+      box-shadow: 0 2px 6px #181c3a30;
+    }
+    .asistencia-info .info-item b {
       color: #ffe86b;
+      font-weight: 700;
     }
-    .asistencia-gracias img, .card-gracias img {
+    .card-gracias img {
       width: 90px;
       margin: 18px 0 8px 0;
       border-radius: 18px;
@@ -374,6 +396,7 @@
         min-width: unset;
         padding: 22px 5vw 18px 5vw;
       }
+      .asistencia-info .info-item { padding: 11px 8px; }
     }
   </style>
 </head>
@@ -458,7 +481,6 @@
   </section>
 
   <script>
-    // Cambia por tu URL de proxy final
     const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
 
     function updateCountdown() {
@@ -479,7 +501,6 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Navegación por secciones
     function irASeccion(seccion) {
       const secciones = ['bienvenida', 'menu', 'confirmacion', 'gracias'];
       secciones.forEach(id => {
@@ -497,11 +518,10 @@
       }
     }
 
-    // Campos de nombres según boletas
     document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
 
     function generarCamposNombres() {
-      let cantidad = parseInt(document.getElementById('numBoletas').value) || 0;
+      let cantidad = parseInt(document.getElementById('numBoletas').value) || '';
       if (cantidad < 1) cantidad = 1;
       if (cantidad > 5) cantidad = 5;
       document.getElementById('numBoletas').value = cantidad ? cantidad : '';
@@ -523,7 +543,6 @@
       }
     }
 
-    // Enviar asistencia
     function enviarAsistencia(e) {
       e.preventDefault();
       const cantidad = Math.min(5, Math.max(1, parseInt(document.getElementById('numBoletas').value) || 1));
@@ -553,19 +572,19 @@
       )).then(results => {
         if(results.every(r => r.result === "ok")) {
           irASeccion('gracias');
-          // Nuevo bloque: separación entre detalles
+          // Separación y visual elegante para detalles:
           const info = `
-            <div style="margin-bottom:18px;">
+            <div class="info-item">
               <b>Nombres registrados:</b><br>
               ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
             </div>
-            <div style="margin-bottom:18px;">
+            <div class="info-item">
               <b>Fecha del evento:</b> 12 de junio
             </div>
-            <div style="margin-bottom:18px;">
+            <div class="info-item">
               <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín
             </div>
-            <div style="margin-bottom:10px;">
+            <div class="info-item">
               <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
             </div>
           `;
