@@ -32,6 +32,8 @@
       z-index: 1;
       padding-top: 20px;
       padding-bottom: 40px;
+      padding-left: 32px;
+      padding-right: 32px;
     }
     .starry-image {
       width: 380px;
@@ -53,6 +55,7 @@
       letter-spacing: 1px;
       margin-bottom: 0.4em;
       text-shadow: 0 4px 20px #0c1333aa;
+      text-align: center;
     }
     .phrase {
       font-size: 1.2rem;
@@ -77,6 +80,7 @@
       font-weight: 700;
       letter-spacing: 2px;
       box-shadow: 0 2px 10px 1px #181c3a26;
+      text-align: center;
     }
     .buttons-row {
       display: flex;
@@ -146,6 +150,8 @@
       margin-top: -32px;
       box-shadow: 0 -4px 32px 0 #10184e55;
       position: relative;
+      padding-left: 32px;
+      padding-right: 32px;
     }
     .menu-title {
       text-align: center;
@@ -241,7 +247,6 @@
       letter-spacing: 1.5px;
       box-shadow: 0 2px 10px 1px #ffd23f80;
     }
-    /* NUEVO: sección asistencia */
     .asistencia-section {
       min-height: 70vh;
       background: linear-gradient(120deg, #222757cc 40%, #334084ee 100%);
@@ -255,7 +260,7 @@
       justify-content: center;
       position: relative;
       z-index: 2;
-      padding: 38px 10px 25px 10px;
+      padding: 38px 32px 25px 32px;
       color: #ffe86b;
       font-family: 'Quicksand', Arial, sans-serif;
     }
@@ -359,7 +364,10 @@
       display: none !important;
     }
     @media (max-width: 700px) {
-      .main-content { padding-top: 10px; }
+      .main-content {
+        padding-left: 7vw;
+        padding-right: 7vw;
+      }
       .starry-image { width: 98vw; }
       .menu-title { font-size: 1.3rem; }
       .menu-card { min-height: 370px; }
@@ -374,7 +382,11 @@
         border-radius: 20px;
         max-width: 97vw;
         margin: 20px 0 24px 0;
-        padding: 20px 2vw 18px 2vw;
+        padding: 18px 5vw 18px 5vw;
+      }
+      .menu-section {
+        padding-left: 5vw;
+        padding-right: 5vw;
       }
     }
   </style>
@@ -391,8 +403,6 @@
       <button class="asistencia-btn" id="btnAsistencia" onclick="mostrarAsistencia()">Confirmar asistencia</button>
     </div>
   </section>
-
-  <!-- Nueva sección para asistencia -->
   <section class="asistencia-section oculto" id="asistencia">
     <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
     <form class="asistencia-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
@@ -408,12 +418,11 @@
       <button class="close-btn" onclick="volverInicio()">Cerrar</button>
     </div>
   </section>
-
   <section class="menu-section oculto" id="menu">
     <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
     <h2 class="menu-title">Menú de 7 tiempos</h2>
     <div class="menu-grid">
-      <!-- Tus tarjetas de menú -->
+      <!-- Tarjetas del menú -->
       <div class="menu-card">
         <img src="ECLIPSE.png" alt="Eclipse" class="menu-img">
         <div class="menu-name">ECLIPSE</div>
@@ -452,8 +461,7 @@
     </div>
   </section>
   <script>
-    // PON AQUÍ LA URL DE TU PROXY
-    const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
+    const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/";
 
     function updateCountdown() {
       const eventDate = new Date("2025-06-12T19:00:00");
