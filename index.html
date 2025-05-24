@@ -30,11 +30,10 @@
       min-height: 100vh;
       position: relative;
       z-index: 1;
-      padding-top: 20px;
+      padding-top: 28px;
       padding-bottom: 40px;
       padding-left: 5vw;
       padding-right: 5vw;
-      box-sizing: border-box;
     }
     .starry-image {
       width: 380px;
@@ -44,7 +43,6 @@
       margin: 25px 0 25px 0;
       transition: transform 0.4s cubic-bezier(.4,2,.3,1), box-shadow 0.4s;
       border: 4px solid #ffd23f55;
-      background: #fff9;
     }
     .starry-image:hover {
       transform: scale(1.025) rotate(-1deg);
@@ -57,7 +55,6 @@
       letter-spacing: 1px;
       margin-bottom: 0.4em;
       text-shadow: 0 4px 20px #0c1333aa;
-      text-align: center;
     }
     .phrase {
       font-size: 1.2rem;
@@ -111,8 +108,6 @@
       background: linear-gradient(90deg, #ffe86b 10%, #fff4d8 90%);
       box-shadow: 0 2px 30px 6px #ffe86b77;
     }
-
-    /* MENU */
     .menu-section {
       padding: 65px 0 40px 0;
       background: linear-gradient(120deg, #232861cc 40%, #2f3d7aee 100%);
@@ -120,13 +115,12 @@
       margin-top: -32px;
       box-shadow: 0 -4px 32px 0 #10184e55;
       position: relative;
-      padding-left: 5vw !important;
-      padding-right: 5vw !important;
-      box-sizing: border-box;
+      padding-left: 6vw;
+      padding-right: 6vw;
     }
     .menu-title {
       text-align: center;
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-family: 'Quicksand', Arial, sans-serif;
       color: #ffe86b;
       letter-spacing: 2px;
@@ -140,7 +134,7 @@
       gap: 32px;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 0;
+      padding: 0 5px;
       position: relative;
       z-index: 2;
     }
@@ -218,11 +212,10 @@
       letter-spacing: 1.5px;
       box-shadow: 0 2px 10px 1px #ffd23f80;
     }
-    /* FLECHA VOLVER FIJA */
     .back-btn {
       position: fixed;
-      right: 5vw;
-      bottom: 5vw;
+      right: 24px;
+      bottom: 24px;
       z-index: 99;
       background: #ffe86b;
       color: #232861;
@@ -252,25 +245,21 @@
       from { transform: translateY(0);}
       to { transform: translateY(-7px);}
     }
-
-    /* Confirmación & Gracias - secciones tarjetas */
     .seccion-tarjeta {
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding-left: 5vw;
-      padding-right: 5vw;
-      box-sizing: border-box;
-      background: linear-gradient(120deg, #232861ee 40%, #2f3d7add 100%);
+      padding: 0 4vw;
+      background: rgba(20, 24, 50, 0.98);
     }
     .card-form, .card-gracias {
-      background: rgba(26,28,63,0.97);
-      border-radius: 24px;
-      box-shadow: 0 6px 36px 5px #191c3a52;
-      padding: 34px 20px 28px 20px;
+      background: #212656;
+      border-radius: 26px;
+      box-shadow: 0 6px 32px 6px #13174144;
+      padding: 38px 30px 30px 30px;
+      max-width: 390px;
       width: 100%;
-      max-width: 410px;
       color: #ffe86b;
       margin: 0 auto;
       display: flex;
@@ -278,114 +267,120 @@
       align-items: center;
     }
     .card-form h2, .card-gracias h2 {
-      font-family: 'Quicksand', Arial, sans-serif;
       color: #ffe86b;
-      margin-bottom: 18px;
+      font-family: 'Quicksand', Arial, sans-serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
       text-align: center;
     }
     .card-form label {
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       color: #ffe86b;
-      font-family: 'Quicksand', Arial, sans-serif;
-      margin-bottom: 5px;
+      margin: 0 0 7px 0;
+      align-self: flex-start;
     }
-    .card-form input[type="number"], .card-form input[type="text"] {
+    .card-form input[type="number"],
+    .card-form input[type="text"] {
       padding: 10px 12px;
-      border-radius: 9px;
+      border-radius: 8px;
       border: none;
-      font-size: 1.07rem;
-      margin-bottom: 14px;
+      font-size: 1rem;
+      margin-bottom: 17px;
       width: 100%;
       background: #fff;
       color: #232861;
       outline: none;
       box-shadow: 0 1px 4px #0002;
       font-family: 'Montserrat', Arial, sans-serif;
-      box-sizing: border-box;
+      margin-top: 0;
     }
-    .card-form button[type="submit"] {
+    .card-form button {
       background: #ffe86b;
       color: #232861;
       font-weight: bold;
       font-family: 'Quicksand', Arial, sans-serif;
-      padding: 9px 27px;
-      font-size: 1.1rem;
-      border-radius: 20px;
+      padding: 10px 24px;
+      font-size: 1.12rem;
+      border-radius: 18px;
       border: none;
       margin-top: 8px;
       box-shadow: 0 2px 10px 1px #ffd23f60;
       cursor: pointer;
       transition: background .17s, color .17s;
+      display: block;
       width: 100%;
-      margin-bottom: 8px;
     }
-    .card-form button[type="submit"]:hover {
+    .card-form button:hover {
       background: #fff4c0;
       color: #132348;
     }
-    .asistencia-info {
-      font-size: 1.07rem;
-      color: #fff;
-      margin-bottom: 12px;
-      margin-top: 4px;
+    .card-gracias {
       text-align: center;
+      padding-bottom: 18px;
     }
-    .card-gracias img {
-      width: 95px;
-      margin: 12px 0 4px 0;
+    .icon-check {
+      display: inline-block;
+      font-size: 2.8rem;
+      color: #7cf86c;
+      margin-bottom: 12px;
+      margin-top: 0;
+    }
+    .asistencia-info > div {
+      margin-bottom: 18px;
+    }
+    .asistencia-info b {
+      color: #ffe86b;
+    }
+    .asistencia-gracias img, .card-gracias img {
+      width: 90px;
+      margin: 18px 0 8px 0;
       border-radius: 18px;
       box-shadow: 0 3px 14px #ffe86b55;
       background: #fff;
     }
-    .card-gracias .close-btn {
-      margin-top: 16px;
+    .close-btn {
+      margin-top: 18px;
       background: #ffe86b;
       color: #191c3a;
       font-family: 'Quicksand', Arial, sans-serif;
       font-weight: bold;
-      padding: 7px 22px;
-      border-radius: 17px;
+      padding: 9px 22px;
+      border-radius: 16px;
       border: none;
       cursor: pointer;
       transition: background 0.18s;
-      width: 100%;
+      font-size: 1rem;
     }
-    .card-gracias .close-btn:hover {
+    .close-btn:hover {
       background: #fff4c0;
-    }
-    .icon-check {
-      font-size: 2.5rem;
-      margin-bottom: 8px;
-      display: block;
-      text-align: center;
-      color: #ffe86b;
-      filter: drop-shadow(0 0 12px #ffe86bcc);
     }
     .oculto {
       display: none !important;
     }
     @media (max-width: 700px) {
-      .main-content { padding-left: 4vw; padding-right: 4vw;}
-      .menu-section { padding-left: 2vw !important; padding-right: 2vw !important;}
-      .menu-title { font-size: 1.5rem; }
+      .main-content { padding-left: 2vw; padding-right: 2vw; }
+      .menu-section { padding-left: 2vw; padding-right: 2vw; }
+      .seccion-tarjeta { padding: 0 3vw; }
+      .menu-title { font-size: 1.35rem; }
       .menu-card { min-height: 370px; }
       .back-btn {
-        right: 2vw;
-        bottom: 3vw;
+        right: 12px;
+        bottom: 12px;
         width: 44px;
         height: 44px;
         font-size: 1.6rem;
       }
-      .seccion-tarjeta {
-        padding-left: 2vw;
-        padding-right: 2vw;
+      .card-form, .card-gracias {
+        min-width: unset;
+        padding: 22px 5vw 18px 5vw;
       }
-      .card-form, .card-gracias { padding: 28px 7vw 20px 7vw; }
     }
   </style>
 </head>
 <body>
   <div class="starry-bg"></div>
+
+  <!-- BIENVENIDA -->
   <section class="main-content" id="bienvenida">
     <h1>Bienvenidos a La noche estrellada</h1>
     <img class="starry-image" src="estrellafugas.png" alt="Estrella fugaz Van Gogh">
@@ -397,7 +392,7 @@
     </div>
   </section>
 
-  <!-- MENÚ -->
+  <!-- MENU -->
   <section class="menu-section oculto" id="menu">
     <h2 class="menu-title">Menú de 7 tiempos</h2>
     <div class="menu-grid">
@@ -440,31 +435,30 @@
     <button class="back-btn" onclick="irASeccion('bienvenida')" title="Volver al inicio">&#8592;</button>
   </section>
 
-  <!-- SECCION CONFIRMACION -->
+  <!-- CONFIRMACIÓN -->
   <section id="confirmacion" class="seccion-tarjeta oculto">
     <form class="card-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
       <h2>Confirmar asistencia</h2>
       <label for="numBoletas">¿Cuántas boletas compraste?</label>
-      <input type="number" id="numBoletas" name="numBoletas" min="1" max="5" placeholder="Ejemplo: 1" required>
+      <input type="number" id="numBoletas" name="numBoletas" min="1" max="5" value="" required placeholder="Cantidad de boletas (1-5)">
       <div id="nombresBoletas"></div>
-      <button type="submit" id="btnConfirmar" style="display:none;">Confirmar</button>
-      <button type="button" onclick="irASeccion('bienvenida')" style="width:100%; margin-top:8px;">Cancelar</button>
+      <button type="submit" id="btnConfirmar">Confirmar</button>
     </form>
   </section>
 
-  <!-- SECCION GRACIAS -->
+  <!-- GRACIAS -->
   <section id="gracias" class="seccion-tarjeta oculto">
     <div class="card-gracias">
-      <span class="icon-check">&#10004;</span>
+      <div class="icon-check">✔️</div>
       <h2>¡Gracias por confirmar tu asistencia!</h2>
       <div class="asistencia-info" id="infoAsistente"></div>
       <img src="logo.png" alt="Logo Institución">
-      <button class="close-btn" onclick="irASeccion('bienvenida')">Volver al inicio</button>
+      <button class="close-btn" onclick="irASeccion('bienvenida')">Cerrar</button>
     </div>
   </section>
 
   <script>
-    // PON AQUÍ LA URL DE TU PROXY (NO LA CAMBIO)
+    // Cambia por tu URL de proxy final
     const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
 
     function updateCountdown() {
@@ -485,58 +479,54 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Cambia de seccion (solo una visible)
-    function irASeccion(id) {
-      for (const seccion of ['bienvenida', 'menu', 'confirmacion', 'gracias']) {
-        const el = document.getElementById(seccion);
-        if (el) el.classList.add('oculto');
+    // Navegación por secciones
+    function irASeccion(seccion) {
+      const secciones = ['bienvenida', 'menu', 'confirmacion', 'gracias'];
+      secciones.forEach(id => {
+        const s = document.getElementById(id);
+        if (s) s.classList.add('oculto');
+      });
+      const target = document.getElementById(seccion);
+      if (target) {
+        target.classList.remove('oculto');
+        window.scrollTo({top: 0, behavior: 'smooth'});
       }
-      const mostrar = document.getElementById(id);
-      if (mostrar) {
-        mostrar.classList.remove('oculto');
-        window.scrollTo({top:0,behavior:'smooth'});
-        // Resetea formulario si es confirmacion
-        if (id === 'confirmacion') {
-          document.getElementById('formAsistencia').reset();
-          document.getElementById('nombresBoletas').innerHTML = '';
-          document.getElementById('btnConfirmar').style.display = 'none';
-        }
+      if (seccion === "confirmacion") {
+        document.getElementById('numBoletas').value = '';
+        generarCamposNombres();
       }
     }
 
-    // Campos dinámicos de nombres
-    document.getElementById('numBoletas').addEventListener('input', function() {
-      let cantidad = parseInt(this.value);
-      if (isNaN(cantidad) || cantidad < 1) cantidad = 1;
-      if (cantidad > 5) cantidad = 5;
-      this.value = cantidad;
-      const container = document.getElementById('nombresBoletas');
-      const btnConfirmar = document.getElementById('btnConfirmar');
-      container.innerHTML = '';
-      btnConfirmar.style.display = 'none';
-      if (cantidad > 0) {
-        for (let i = 1; i <= cantidad; i++) {
-          const label = document.createElement('label');
-          label.setAttribute('for', `nombreAsistente_${i}`);
-          label.textContent = `Nombre de la persona ${i}:`;
-          const input = document.createElement('input');
-          input.type = "text";
-          input.id = `nombreAsistente_${i}`;
-          input.name = `nombreAsistente_${i}`;
-          input.required = true;
-          input.maxLength = 50;
-          input.placeholder = "Nombre completo...";
-          container.appendChild(label);
-          container.appendChild(input);
-        }
-        btnConfirmar.style.display = 'block';
-      }
-    });
+    // Campos de nombres según boletas
+    document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
 
-    // Enviar asistencia: guarda todos los nombres (uno por fila)
+    function generarCamposNombres() {
+      let cantidad = parseInt(document.getElementById('numBoletas').value) || 0;
+      if (cantidad < 1) cantidad = 1;
+      if (cantidad > 5) cantidad = 5;
+      document.getElementById('numBoletas').value = cantidad ? cantidad : '';
+      const container = document.getElementById('nombresBoletas');
+      container.innerHTML = '';
+      for (let i = 1; i <= cantidad; i++) {
+        const label = document.createElement('label');
+        label.setAttribute('for', `nombreAsistente_${i}`);
+        label.textContent = `Nombre de la persona ${i}:`;
+        const input = document.createElement('input');
+        input.type = "text";
+        input.id = `nombreAsistente_${i}`;
+        input.name = `nombreAsistente_${i}`;
+        input.required = true;
+        input.maxLength = 50;
+        input.placeholder = "Nombre completo...";
+        container.appendChild(label);
+        container.appendChild(input);
+      }
+    }
+
+    // Enviar asistencia
     function enviarAsistencia(e) {
       e.preventDefault();
-      const cantidad = Math.min(5, parseInt(document.getElementById('numBoletas').value) || 0);
+      const cantidad = Math.min(5, Math.max(1, parseInt(document.getElementById('numBoletas').value) || 1));
       let nombres = [];
       for (let i = 1; i <= cantidad; i++) {
         const val = (document.getElementById(`nombreAsistente_${i}`).value || '').trim();
@@ -548,7 +538,7 @@
         nombres.push(val);
       }
       if (nombres.length === 0) return false;
-      Promise.all(nombres.map(nombre => 
+      Promise.all(nombres.map(nombre =>
         fetch(PROXY_URL, {
           method: "POST",
           body: JSON.stringify({
@@ -562,14 +552,22 @@
         .then(r => r.json())
       )).then(results => {
         if(results.every(r => r.result === "ok")) {
-          // Mostrar sección gracias
           irASeccion('gracias');
+          // Nuevo bloque: separación entre detalles
           const info = `
-            <b>Nombres registrados:</b><br>
-            ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
-            <br><b>Fecha del evento:</b> 12 de junio<br>
-            <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín<br>
-            <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
+            <div style="margin-bottom:18px;">
+              <b>Nombres registrados:</b><br>
+              ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
+            </div>
+            <div style="margin-bottom:18px;">
+              <b>Fecha del evento:</b> 12 de junio
+            </div>
+            <div style="margin-bottom:18px;">
+              <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín
+            </div>
+            <div style="margin-bottom:10px;">
+              <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
+            </div>
           `;
           document.getElementById('infoAsistente').innerHTML = info;
         } else {
