@@ -6,6 +6,14 @@
   <title>La Noche Estrellada - Menú Gastronómico</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --tarjeta-bg: rgba(26,28,63,0.98);
+      --tarjeta-borde: #ffe86b;
+      --tarjeta-shadow: 0 6px 36px 5px #191c3a52;
+      --tarjeta-radius: 22px;
+      --tarjeta-padding: 32px 20px 26px 20px;
+      --margen-lados: 14vw;
+    }
     body {
       margin: 0;
       font-family: 'Montserrat', Arial, sans-serif;
@@ -22,18 +30,22 @@
       opacity: 0.15;
       filter: blur(3px) brightness(0.7);
     }
-    .main-content {
+    .section {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      position: relative;
-      z-index: 1;
-      padding-top: 24px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 38px var(--margen-lados) 42px var(--margen-lados);
+    }
+    .oculto { display: none !important; }
+
+    /* ----------- BIENVENIDA ----------- */
+    .main-content {
+      padding-top: 22px;
       padding-bottom: 40px;
-      padding-left: 18px;
-      padding-right: 18px;
     }
     .starry-image {
       width: 380px;
@@ -55,6 +67,7 @@
       letter-spacing: 1px;
       margin-bottom: 0.4em;
       text-shadow: 0 4px 20px #0c1333aa;
+      text-align: center;
     }
     .phrase {
       font-size: 1.2rem;
@@ -108,186 +121,31 @@
       background: linear-gradient(90deg, #ffe86b 10%, #fff4d8 90%);
       box-shadow: 0 2px 30px 6px #ffe86b77;
     }
-    .back-btn {
-      position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 99;
-      background: #ffe86b;
-      color: #232861;
-      font-size: 2.2rem;
-      font-family: 'Quicksand', Arial, sans-serif;
-      border: none;
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      display: flex;
+
+    /* ----------- SECCIÓN CONFIRMACIÓN (tarjeta elegante) ----------- */
+    .confirmacion-section {
+      background: var(--tarjeta-bg);
+      border-radius: var(--tarjeta-radius);
+      border: 2.5px solid var(--tarjeta-borde);
+      box-shadow: var(--tarjeta-shadow);
+      padding: var(--tarjeta-padding);
+      margin: 44px auto 0 auto;
+      max-width: 460px;
+      width: 100%;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 2px 18px 2px #ffd23f55;
-      transition: background 0.18s, transform 0.17s, box-shadow 0.18s;
-      outline: none;
-      opacity: 0.95;
-      animation: btnFloat 1.6s infinite alternate cubic-bezier(.3,1.7,.5,1);
-    }
-    .back-btn:hover {
-      background: #fff4c0;
-      transform: scale(1.12);
-      box-shadow: 0 8px 28px 6px #ffe86b99;
-      opacity: 1;
-    }
-    @keyframes btnFloat {
-      from { transform: translateY(0);}
-      to { transform: translateY(-7px);}
-    }
-    .menu-section {
-      padding: 65px 0 40px 0;
-      background: linear-gradient(120deg, #232861cc 40%, #2f3d7aee 100%);
-      border-radius: 36px 36px 0 0;
-      margin-top: -32px;
-      box-shadow: 0 -4px 32px 0 #10184e55;
-      position: relative;
-      padding-left: 14px;
-      padding-right: 14px;
-    }
-    .menu-title {
-      text-align: center;
-      font-size: 2.45rem;
-      font-family: 'Quicksand', Arial, sans-serif;
-      color: #ffe86b;
-      letter-spacing: 2px;
-      margin-bottom: 34px;
-      margin-top: 0;
-      text-shadow: 0 6px 20px #0008;
-    }
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 10px;
-      position: relative;
-      z-index: 2;
-    }
-    .menu-card {
-      background: rgba(26,28,63,0.95);
-      border-radius: 25px;
-      box-shadow: 0 4px 26px 2px #21234525;
-      padding: 22px 16px 20px 16px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      border: 2.5px solid #ffe86b80;
-      transition: transform 0.24s cubic-bezier(.4,2,.3,1), box-shadow 0.2s;
-      min-height: 450px;
     }
-    .menu-card:hover {
-      transform: scale(1.025) translateY(-8px);
-      box-shadow: 0 6px 44px 10px #191c3a80;
-      border-color: #ffe86b;
-      z-index: 3;
-    }
-    .menu-img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 2.5px solid #ffe86b;
-      box-shadow: 0 4px 18px 2px #181c3a55;
-      background: #fff;
-      margin-bottom: 20px;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .menu-card:hover .menu-img {
-      box-shadow: 0 8px 24px 8px #ffd23f44;
-      border-color: #ffd23f;
-    }
-    .menu-name {
-      font-size: 1.32rem;
-      color: #ffe86b;
-      margin: 4px 0 11px 0;
-      font-family: 'Quicksand', Arial, sans-serif;
-      letter-spacing: 1.1px;
-      text-align: center;
-    }
-    .menu-desc {
-      font-size: 1rem;
-      color: #fff;
-      text-align: center;
-      padding: 0 6px;
-      margin-bottom: 0;
-      line-height: 1.4;
-      font-family: 'Montserrat', Arial, sans-serif;
-    }
-    .card-soon {
-      opacity: 0.8;
-      background: repeating-linear-gradient(-45deg,#ffe86b20 0 12px,#232861cc 12px 24px);
-      border: 2.5px dashed #ffe86b;
-      filter: grayscale(0.3);
-      animation: cardpulse 2.2s infinite alternate;
-    }
-    @keyframes cardpulse {
-      from { filter: grayscale(0.5) brightness(1);}
-      to { filter: grayscale(0.2) brightness(1.17);}
-    }
-    .soon-label {
-      background: #ffe86b;
-      color: #1a213f;
-      font-weight: bold;
-      font-size: 1.17rem;
-      padding: 6px 18px;
-      border-radius: 17px;
-      margin-top: 36px;
-      letter-spacing: 1.5px;
-      box-shadow: 0 2px 10px 1px #ffd23f80;
-    }
-    /* Overlay para modal */
-    #asistenciaOverlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(10,10,30,0.55);
-      z-index: 998;
-    }
-    /* Estilos para el formulario de confirmación */
-    .asistencia-form {
-      background: rgba(26,28,63,0.97);
-      border-radius: 26px;
-      box-shadow: 0 6px 36px 5px #191c3a36;
-      padding: 30px 20px 18px 20px;
-      position: fixed;
-      z-index: 1000;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      min-width: 330px;
-      max-width: 96vw;
-      color: #ffe86b;
-      animation: asistenciaPop 0.5s;
-    }
-    .asistencia-form.active {
-      display: flex;
-    }
-    @keyframes asistenciaPop {
-      from { opacity: 0; transform: translate(-50%, -60%) scale(0.95);}
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1);}
-    }
-    .asistencia-form label {
+    .confirmacion-section label {
       font-size: 1.13rem;
-      margin-bottom: 10px;
       color: #ffe86b;
       font-family: 'Quicksand', Arial, sans-serif;
-      align-self: flex-start;
+      margin-bottom: 10px;
+      margin-top: 8px;
+      width: 100%;
     }
-    .asistencia-form input[type="number"],
-    .asistencia-form input[type="text"] {
+    .confirmacion-section input[type="number"],
+    .confirmacion-section input[type="text"] {
       padding: 10px 12px;
       border-radius: 9px;
       border: none;
@@ -300,9 +158,8 @@
       box-shadow: 0 1px 4px #0002;
       font-family: 'Montserrat', Arial, sans-serif;
       box-sizing: border-box;
-      margin-top: 2px;
     }
-    .asistencia-form button {
+    .confirmacion-section button {
       background: #ffe86b;
       color: #232861;
       font-weight: bold;
@@ -317,101 +174,104 @@
       transition: background .17s, color .17s;
       display: none;
     }
-    .asistencia-form button.show {
-      display: block;
-    }
-    .asistencia-form button:hover {
+    .confirmacion-section button.show { display: block; }
+    .confirmacion-section button:hover {
       background: #fff4c0;
       color: #132348;
     }
+    .confirmacion-title {
+      color: #ffe86b;
+      font-family: 'Quicksand', Arial, sans-serif;
+      font-size: 2rem;
+      margin-bottom: 14px;
+      margin-top: 0;
+      letter-spacing: 1.2px;
+      text-align: center;
+    }
 
-    /* NUEVO: Estilos solo para la sección de gracias */
+    /* ----------- SECCIÓN GRACIAS (tarjeta elegante) ----------- */
     .gracias-section {
+      background: var(--tarjeta-bg);
+      border-radius: var(--tarjeta-radius);
+      border: 2.5px solid var(--tarjeta-borde);
+      box-shadow: var(--tarjeta-shadow);
+      padding: var(--tarjeta-padding);
+      margin: 48px auto 0 auto;
+      max-width: 440px;
+      width: 100%;
+      align-items: center;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 62vh;
-      max-width: 420px;
-      margin: 38px auto 0 auto;
-      padding: 36px 22px 30px 22px;
-      background: rgba(24, 28, 58, 0.97);
-      border-radius: 32px;
-      box-shadow: 0 8px 36px 8px #181c3a30;
-      color: #ffe86b;
-      text-align: center;
-      position: relative;
-      border: 2.5px solid #ffe86b80;
-      animation: graciasPop 0.6s;
+      animation: graciasAppear .5s;
     }
-    @keyframes graciasPop {
-      from { opacity: 0; transform: translateY(30px) scale(0.95);}
-      to { opacity: 1; transform: translateY(0) scale(1);}
+    @keyframes graciasAppear {
+      from { opacity: 0; transform: scale(0.97);}
+      to { opacity: 1; transform: scale(1);}
     }
     .gracias-icono {
-      font-size: 2.8rem;
-      margin-bottom: 7px;
+      font-size: 2.5rem;
       color: #ffe86b;
-      filter: drop-shadow(0 2px 10px #ffe86b66);
-      animation: sparkle 2.1s infinite alternate cubic-bezier(.4,2,.4,1);
+      margin-bottom: 12px;
+      margin-top: 8px;
+      animation: sparkle 2.5s infinite alternate;
+      filter: drop-shadow(0 0 8px #ffe86b99);
     }
     @keyframes sparkle {
-      from { transform: scale(1) rotate(-7deg);}
-      to { transform: scale(1.14) rotate(8deg);}
+      from { filter: drop-shadow(0 0 6px #ffe86b88);}
+      to { filter: drop-shadow(0 0 15px #ffe86bff);}
     }
     .gracias-section h2 {
-      font-size: 2.12rem;
       color: #ffe86b;
       margin-bottom: 14px;
+      margin-top: 0;
       font-family: 'Quicksand', Arial, sans-serif;
-      letter-spacing: 1.2px;
-      text-shadow: 0 4px 18px #0c133366;
+      font-size: 2rem;
+      letter-spacing: 1.1px;
+      text-align: center;
     }
-    .gracias-section .asistencia-info {
-      font-size: 1.12rem;
+    .asistencia-info {
+      font-size: 1.08rem;
       color: #fff;
-      margin-bottom: 18px;
-      line-height: 1.6;
-      background: rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 17px 12px;
-      font-family: 'Montserrat', Arial, sans-serif;
-      box-shadow: 0 2px 10px 2px #181c3a14;
+      background: #23286144;
+      border-radius: 13px;
+      margin-bottom: 15px;
+      margin-top: 2px;
+      padding: 10px 14px;
+      text-align: center;
+      box-shadow: 0 1px 7px #181c3a20;
+      width: 100%;
+      box-sizing: border-box;
     }
     .gracias-section img {
-      width: 96px;
-      margin: 20px 0 9px 0;
-      border-radius: 22px;
+      width: 90px;
+      margin: 14px 0 8px 0;
+      border-radius: 18px;
       box-shadow: 0 3px 14px #ffe86b55;
       background: #fff;
-      border: 2px solid #ffe86b;
+      display: block;
     }
     .gracias-section .close-btn {
       margin-top: 16px;
-      background: linear-gradient(90deg, #ffe86b 60%, #fff8b0 100%);
+      background: #ffe86b;
       color: #191c3a;
       font-family: 'Quicksand', Arial, sans-serif;
-      font-size: 1.13rem;
       font-weight: bold;
-      padding: 10px 32px;
-      border-radius: 20px;
+      padding: 7px 22px;
+      border-radius: 17px;
       border: none;
-      box-shadow: 0 2px 10px 2px #ffd23f30;
       cursor: pointer;
-      transition: background 0.18s, color 0.18s, transform 0.13s;
+      transition: background 0.18s;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 10px 1px #ffd23f60;
     }
     .gracias-section .close-btn:hover {
       background: #fff4c0;
-      color: #191c3a;
-      transform: scale(1.08);
-    }
-    .oculto {
-      display: none !important;
     }
     @media (max-width: 700px) {
-      .main-content { padding-left: 6vw; padding-right: 6vw; }
+      :root { --margen-lados: 6vw; }
+      .main-content, .section { padding-left: var(--margen-lados); padding-right: var(--margen-lados);}
       .starry-image { width: 98vw; }
-      .menu-title { font-size: 1.43rem; }
+      .menu-title { font-size: 1.5rem; }
       .menu-card { min-height: 370px; }
       .back-btn {
         right: 12px;
@@ -420,54 +280,55 @@
         height: 44px;
         font-size: 1.6rem;
       }
-      .asistencia-form, .gracias-section {
-        min-width: unset;
-        padding: 10vw 2vw 6vw 2vw;
-        max-width: 96vw;
+      .confirmacion-section, .gracias-section {
+        max-width: 99vw;
+        padding-left: 5vw; padding-right: 5vw;
       }
-      .gracias-section h2 { font-size: 1.21rem;}
-      .gracias-section img { width: 62px;}
-      .gracias-section .close-btn { font-size: 1rem; padding: 8px 18px; }
     }
   </style>
 </head>
 <body>
   <div class="starry-bg"></div>
-  <section class="main-content" id="bienvenida">
+
+  <!-- BIENVENIDA -->
+  <section class="section main-content" id="bienvenida">
     <h1>Bienvenidos a La noche estrellada</h1>
     <img class="starry-image" src="estrellafugas.png" alt="Estrella fugaz Van Gogh">
     <div class="phrase">Una experiencia celestial de sabores bajo la noche estrellada</div>
     <div class="countdown" id="countdown">Cargando contador...</div>
     <div class="buttons-row">
-      <button class="menu-btn" onclick="scrollToMenu()">Ver menú</button>
-      <button class="asistencia-btn" id="btnAsistencia" onclick="abrirAsistencia()">Confirmar asistencia</button>
+      <button class="menu-btn" onclick="irASeccion('menu')">Ver menú</button>
+      <button class="asistencia-btn" onclick="irASeccion('confirmacion')">Confirmar asistencia</button>
     </div>
   </section>
 
-  <!-- Overlay para modal -->
-  <div id="asistenciaOverlay"></div>
+  <!-- SECCIÓN CONFIRMACIÓN -->
+  <section class="section confirmacion-section oculto" id="confirmacion">
+    <div class="confirmacion-title">Confirmar asistencia</div>
+    <form id="formAsistencia" onsubmit="return enviarAsistencia(event)">
+      <label for="numBoletas">¿Cuántas boletas compraste?</label>
+      <input type="number" id="numBoletas" name="numBoletas" min="1" max="5" value="" placeholder="Ingresa un número de 1 a 5" required>
+      <div id="nombresBoletas"></div>
+      <button type="submit" id="btnConfirmar">Confirmar</button>
+    </form>
+    <button class="close-btn" onclick="volverInicio()">Volver al inicio</button>
+  </section>
 
-  <!-- Formulario para confirmar asistencia -->
-  <form class="asistencia-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
-    <label for="numBoletas">¿Cuántas boletas compraste?</label>
-    <input type="number" id="numBoletas" name="numBoletas" min="1" max="5" value="" placeholder="Ingresa un número de 1 a 5" required>
-    <div id="nombresBoletas"></div>
-    <button type="submit" id="btnConfirmar">Confirmar</button>
-  </form>
-
-  <!-- SECCIÓN DE GRACIAS MEJORADA -->
-  <div class="asistencia-gracias gracias-section oculto" id="gracias">
+  <!-- SECCIÓN GRACIAS -->
+  <section class="section gracias-section oculto" id="gracias">
     <div class="gracias-icono">&#10024;</div>
     <h2>¡Gracias por confirmar tu asistencia!</h2>
     <div class="asistencia-info" id="infoAsistente"></div>
     <img src="logo.png" alt="Logo Institución">
     <button class="close-btn" onclick="volverInicio()">Cerrar</button>
-  </div>
+  </section>
 
+  <!-- MENÚ -->
   <section class="menu-section oculto" id="menu">
     <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
     <h2 class="menu-title">Menú de 7 tiempos</h2>
     <div class="menu-grid">
+      <!-- Aquí tus tarjetas de menú, no modificadas -->
       <div class="menu-card">
         <img src="ECLIPSE.png" alt="Eclipse" class="menu-img">
         <div class="menu-name">ECLIPSE</div>
@@ -505,8 +366,9 @@
       </div>
     </div>
   </section>
+
   <script>
-    // URL DE TU PROXY FUNCIONAL
+    // URL DEL PROXY FUNCIONAL
     const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
 
     function updateCountdown() {
@@ -527,44 +389,27 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    function scrollToMenu() {
-      document.getElementById('bienvenida').classList.add('oculto');
-      document.getElementById('menu').classList.remove('oculto');
-      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    // Muestra solo la sección indicada, oculta las demás
+    function irASeccion(id) {
+      const secciones = ['bienvenida', 'menu', 'confirmacion', 'gracias'];
+      secciones.forEach(s => document.getElementById(s).classList.add('oculto'));
+      document.getElementById(id).classList.remove('oculto');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (id === "confirmacion") {
+        document.getElementById('formAsistencia').reset();
+        document.getElementById('nombresBoletas').innerHTML = '';
+      }
     }
-    function volverInicio() {
-      document.getElementById('menu').classList.add('oculto');
-      document.getElementById('gracias').classList.add('oculto');
-      document.getElementById('bienvenida').classList.remove('oculto');
-      document.getElementById('bienvenida').scrollIntoView({ behavior: 'smooth' });
-    }
+    function volverInicio() { irASeccion('bienvenida'); }
 
-    // MODAL asistencia
-    function abrirAsistencia() {
-      document.getElementById('formAsistencia').classList.add('active');
-      document.getElementById('asistenciaOverlay').style.display = "block";
-      document.getElementById('numBoletas').value = '';
-      generarCamposNombres();
-      document.getElementById('numBoletas').focus();
-    }
-    function cerrarGracias() {
-      document.getElementById('gracias').classList.add('oculto');
-      document.getElementById('asistenciaOverlay').style.display = "none";
-    }
-    document.getElementById('asistenciaOverlay').onclick = function() {
-      document.getElementById('formAsistencia').classList.remove('active');
-      document.getElementById('gracias').classList.add('oculto');
-      this.style.display = "none";
-    };
-
-    // Dinámico para los nombres
+    // CONFIRMACIÓN DE ASISTENCIA
     document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
 
     function generarCamposNombres() {
       let cantidad = parseInt(document.getElementById('numBoletas').value) || 0;
-      if(cantidad < 1) cantidad = 1;
-      if(cantidad > 5) cantidad = 5;
-      document.getElementById('numBoletas').value = cantidad ? cantidad : '';
+      if (cantidad < 1) cantidad = 1;
+      if (cantidad > 5) cantidad = 5;
+      document.getElementById('numBoletas').value = cantidad > 0 ? cantidad : "";
       const container = document.getElementById('nombresBoletas');
       const btnConfirmar = document.getElementById('btnConfirmar');
       container.innerHTML = '';
@@ -603,7 +448,7 @@
         nombres.push(val);
       }
       if (nombres.length === 0) return false;
-      Promise.all(nombres.map(nombre => 
+      Promise.all(nombres.map(nombre =>
         fetch(PROXY_URL, {
           method: "POST",
           body: JSON.stringify({
@@ -617,8 +462,6 @@
         .then(r => r.json())
       )).then(results => {
         if(results.every(r => r.result === "ok")) {
-          document.getElementById('formAsistencia').classList.remove('active');
-          document.getElementById('asistenciaOverlay').style.display = "none";
           const info = `
             <b>Nombres registrados:</b><br>
             ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
@@ -627,8 +470,7 @@
             <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
           `;
           document.getElementById('infoAsistente').innerHTML = info;
-          document.getElementById('gracias').classList.remove('oculto');
-          document.getElementById('gracias').scrollIntoView({ behavior: 'smooth' });
+          irASeccion('gracias');
         } else {
           alert("Ocurrió un error al registrar tu confirmación. Intenta de nuevo.");
         }
@@ -638,12 +480,10 @@
       return false;
     }
 
-    // ESC para cerrar modales
+    // ESC para volver al inicio desde gracias/confirmación (opcional)
     document.addEventListener('keydown', function(e) {
       if(e.key === "Escape") {
-        cerrarGracias();
-        document.getElementById('formAsistencia').classList.remove('active');
-        document.getElementById('asistenciaOverlay').style.display = "none";
+        volverInicio();
       }
     });
   </script>
