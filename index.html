@@ -13,16 +13,6 @@
       min-height: 100vh;
       color: #fff;
       overflow-x: hidden;
-      box-sizing: border-box;
-    }
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
-    .main-content, .asistencia-section, .gracias-section {
-      max-width: 510px;
-      margin: 0 auto;
-      padding-left: 32px;
-      padding-right: 32px;
     }
     .starry-bg {
       position: fixed;
@@ -31,6 +21,26 @@
       background: url('https://upload.wikimedia.org/wikipedia/commons/5/57/Vincent_van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg') center/cover no-repeat;
       opacity: 0.15;
       filter: blur(3px) brightness(0.7);
+    }
+    /* >>> Cambios: padding lateral a todas las secciones <<< */
+    .main-content,
+    .menu-section,
+    #asistencia,
+    #gracias {
+      padding-left: 4vw;
+      padding-right: 4vw;
+      box-sizing: border-box;
+    }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      padding-top: 20px;
+      padding-bottom: 40px;
     }
     .starry-image {
       width: 380px;
@@ -145,11 +155,6 @@
       margin-top: -32px;
       box-shadow: 0 -4px 32px 0 #10184e55;
       position: relative;
-      padding-left: 32px;
-      padding-right: 32px;
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .menu-title {
       text-align: center;
@@ -167,9 +172,10 @@
       gap: 32px;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 4vw;
       position: relative;
       z-index: 2;
+      box-sizing: border-box;
     }
     .menu-card {
       background: rgba(26,28,63,0.95);
@@ -245,111 +251,35 @@
       letter-spacing: 1.5px;
       box-shadow: 0 2px 10px 1px #ffd23f80;
     }
-    .asistencia-section {
-      padding-top: 40px;
-      padding-bottom: 20px;
-      text-align: center;
-    }
-    .asistencia-form label {
-      font-size: 1.13rem;
-      margin-bottom: 10px;
-      color: #ffe86b;
-      font-family: 'Quicksand', Arial, sans-serif;
-    }
-    .asistencia-form input[type="number"],
-    .asistencia-form input[type="text"] {
-      padding: 10px 12px;
-      border-radius: 9px;
-      border: none;
-      font-size: 1.07rem;
-      margin-bottom: 14px;
-      width: 100%;
-      background: #fff;
-      color: #232861;
-      outline: none;
-      box-shadow: 0 1px 4px #0002;
-      font-family: 'Montserrat', Arial, sans-serif;
-    }
-    .asistencia-form button {
-      background: #ffe86b;
-      color: #232861;
-      font-weight: bold;
-      font-family: 'Quicksand', Arial, sans-serif;
-      padding: 9px 27px;
-      font-size: 1.1rem;
-      border-radius: 20px;
-      border: none;
-      margin-top: 8px;
-      box-shadow: 0 2px 10px 1px #ffd23f60;
-      cursor: pointer;
-      transition: background .17s, color .17s;
-      display: none;
-    }
-    .asistencia-form button.show {
-      display: block;
-    }
-    .asistencia-form button:hover {
-      background: #fff4c0;
-      color: #132348;
-    }
-    .gracias-section {
-      padding-top: 40px;
-      padding-bottom: 20px;
-      text-align: center;
-    }
-    .asistencia-gracias h2 {
-      color: #ffe86b;
-      margin-bottom: 12px;
-      font-family: 'Quicksand', Arial, sans-serif;
-    }
-    .asistencia-info {
-      font-size: 1.07rem;
-      color: #fff;
-      margin-bottom: 12px;
-      margin-top: 4px;
-    }
-    .asistencia-gracias img {
-      width: 95px;
-      margin: 12px 0 4px 0;
-      border-radius: 18px;
-      box-shadow: 0 3px 14px #ffe86b55;
-      background: #fff;
-    }
-    .asistencia-gracias .close-btn {
-      margin-top: 16px;
-      background: #ffe86b;
-      color: #191c3a;
-      font-family: 'Quicksand', Arial, sans-serif;
-      font-weight: bold;
-      padding: 7px 22px;
-      border-radius: 17px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.18s;
-    }
-    .asistencia-gracias .close-btn:hover {
-      background: #fff4c0;
-    }
     .oculto {
       display: none !important;
     }
     @media (max-width: 700px) {
-      .main-content, .asistencia-section, .gracias-section {
-        padding-left: 8vw;
-        padding-right: 8vw;
-        max-width: 97vw;
+      .main-content,
+      .menu-section,
+      #asistencia,
+      #gracias {
+        padding-left: 3vw;
+        padding-right: 3vw;
       }
-      .menu-section {
-        padding-left: 5vw;
-        padding-right: 5vw;
-        max-width: 99vw;
+      .menu-title { font-size: 1.3rem; }
+      .menu-card { min-height: 370px; }
+      .back-btn {
+        right: 12px;
+        bottom: 12px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.6rem;
+      }
+      .menu-grid {
+        padding: 0 1vw;
       }
     }
+    /* Si tienes estilos para .asistencia-form, etc., agrégales también padding: 0; para evitar doble padding */
   </style>
 </head>
 <body>
   <div class="starry-bg"></div>
-  <!-- Bienvenida -->
   <section class="main-content" id="bienvenida">
     <h1>Bienvenidos a La noche estrellada</h1>
     <img class="starry-image" src="estrellafugas.png" alt="Estrella fugaz Van Gogh">
@@ -357,31 +287,28 @@
     <div class="countdown" id="countdown">Cargando contador...</div>
     <div class="buttons-row">
       <button class="menu-btn" onclick="scrollToMenu()">Ver menú</button>
-      <button class="asistencia-btn" onclick="mostrarAsistencia()">Confirmar asistencia</button>
+      <button class="asistencia-btn" id="btnAsistencia" onclick="mostrarAsistencia()">Confirmar asistencia</button>
     </div>
   </section>
 
-  <!-- Confirmar Asistencia -->
-  <section class="asistencia-section oculto" id="asistencia">
+  <section class="oculto" id="asistencia">
+    <h2 class="menu-title">Confirmar asistencia</h2>
     <form class="asistencia-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
       <label for="numBoletas">¿Cuántas boletas compraste?</label>
       <input type="number" id="numBoletas" name="numBoletas" min="0" max="5" value="0" required>
       <div id="nombresBoletas"></div>
       <button type="submit" id="btnConfirmar">Confirmar</button>
     </form>
+    <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
   </section>
 
-  <!-- Mensaje de agradecimiento -->
-  <section class="gracias-section oculto" id="gracias">
-    <div class="asistencia-gracias">
-      <h2>¡Gracias por confirmar tu asistencia!</h2>
-      <div class="asistencia-info" id="infoAsistente"></div>
-      <img src="logo.png" alt="Logo Institución">
-      <button class="close-btn" onclick="volverInicio()">Cerrar</button>
-    </div>
+  <section class="oculto" id="gracias">
+    <h2 class="menu-title">¡Gracias por confirmar tu asistencia!</h2>
+    <div class="asistencia-info" id="infoAsistente"></div>
+    <img src="logo.png" alt="Logo Institución" style="width:95px;margin:12px 0 4px 0;border-radius:18px;box-shadow:0 3px 14px #ffe86b55;background:#fff;">
+    <button class="asistencia-btn" onclick="volverInicio()">Volver al inicio</button>
   </section>
 
-  <!-- Menú gastronómico -->
   <section class="menu-section oculto" id="menu">
     <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
     <h2 class="menu-title">Menú de 7 tiempos</h2>
@@ -424,7 +351,7 @@
     </div>
   </section>
   <script>
-    // PON AQUÍ LA URL DE TU PROXY
+    // Usa SIEMPRE la url de proxy correcta
     const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
 
     function updateCountdown() {
@@ -450,18 +377,36 @@
       document.getElementById('menu').classList.remove('oculto');
       document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
     }
+
     function mostrarAsistencia() {
       ocultarTodo();
       document.getElementById('asistencia').classList.remove('oculto');
       document.getElementById('asistencia').scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('formAsistencia').reset();
+      document.getElementById('numBoletas').value = 0;
       generarCamposNombres();
+      document.getElementById('numBoletas').focus();
     }
+
     function volverInicio() {
       ocultarTodo();
       document.getElementById('bienvenida').classList.remove('oculto');
       document.getElementById('bienvenida').scrollIntoView({ behavior: 'smooth' });
     }
+
+    function mostrarGracias(nombres) {
+      ocultarTodo();
+      const info = `
+        <b>Nombres registrados:</b><br>
+        ${nombres.map((n, i) => (i + 1) + ". " + n).join('<br>')}
+        <br><b>Fecha del evento:</b> 12 de junio<br>
+        <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín<br>
+        <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
+      `;
+      document.getElementById('infoAsistente').innerHTML = info;
+      document.getElementById('gracias').classList.remove('oculto');
+      document.getElementById('gracias').scrollIntoView({ behavior: 'smooth' });
+    }
+
     function ocultarTodo() {
       document.getElementById('bienvenida').classList.add('oculto');
       document.getElementById('menu').classList.add('oculto');
@@ -470,14 +415,12 @@
     }
 
     // Dinámico para los nombres
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
-    });
+    document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
 
     function generarCamposNombres() {
       let cantidad = parseInt(document.getElementById('numBoletas').value) || 0;
-      if(cantidad < 0) cantidad = 0;
-      if(cantidad > 5) cantidad = 5;
+      if (cantidad < 0) cantidad = 0;
+      if (cantidad > 5) cantidad = 5;
       document.getElementById('numBoletas').value = cantidad;
       const container = document.getElementById('nombresBoletas');
       const btnConfirmar = document.getElementById('btnConfirmar');
@@ -528,17 +471,10 @@
             "Content-Type": "application/json"
           }
         })
-        .then(r => r.json())
+          .then(r => r.json())
       )).then(results => {
-        if(results.every(r => r.result === "ok")) {
-          const info = `
-            <b>Nombres registrados:</b><br>
-            ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
-            <br><b>Fecha del evento:</b> 12 de junio<br>
-            <b>Lugar:</b> compuestudio Cra. 45 #49-60, La Candelaria, Medellín<br>
-            <b>Código de vestimenta:</b> BLANCO, NEGRO, AZUL OSCURO O GRIS
-          `;
-          mostrarGracias(info);
+        if (results.every(r => r.result === "ok")) {
+          mostrarGracias(nombres);
         } else {
           alert("Ocurrió un error al registrar tu confirmación. Intenta de nuevo.");
         }
@@ -548,16 +484,9 @@
       return false;
     }
 
-    function mostrarGracias(infoHtml) {
-      ocultarTodo();
-      document.getElementById('infoAsistente').innerHTML = infoHtml;
-      document.getElementById('gracias').classList.remove('oculto');
-      document.getElementById('gracias').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // ESC para cerrar modales/secciones
-    document.addEventListener('keydown', function(e) {
-      if(e.key === "Escape") {
+    // ESC para cerrar modales (si necesitas volver a inicio con ESC)
+    document.addEventListener('keydown', function (e) {
+      if (e.key === "Escape") {
         volverInicio();
       }
     });
