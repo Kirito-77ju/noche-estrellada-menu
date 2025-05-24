@@ -241,37 +241,23 @@
       letter-spacing: 1.5px;
       box-shadow: 0 2px 10px 1px #ffd23f80;
     }
-    #asistenciaOverlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(10,10,30,0.55);
-      z-index: 998;
-    }
-    .asistencia-form, .asistencia-gracias {
-      background: rgba(26,28,63,0.98);
-      border-radius: 24px;
-      box-shadow: 0 6px 36px 5px #191c3a52;
-      padding: 32px 24px 26px 24px;
-      position: fixed;
-      z-index: 1000;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
+    /* NUEVO: sección asistencia */
+    .asistencia-section {
+      min-height: 70vh;
+      background: linear-gradient(120deg, #222757cc 40%, #334084ee 100%);
+      border-radius: 36px;
+      box-shadow: 0 4px 32px 0 #10184e44;
+      max-width: 500px;
+      margin: 50px auto 40px auto;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      min-width: 330px;
-      max-width: 96vw;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      padding: 38px 10px 25px 10px;
       color: #ffe86b;
-      animation: asistenciaPop 0.5s;
-    }
-    .asistencia-form.active, .asistencia-gracias.active {
-      display: flex;
-    }
-    @keyframes asistenciaPop {
-      from { opacity: 0; transform: translate(-50%, -60%) scale(0.95);}
-      to { opacity: 1; transform: translate(-50%, -50%) scale(1);}
+      font-family: 'Quicksand', Arial, sans-serif;
     }
     .asistencia-form label {
       font-size: 1.13rem;
@@ -314,6 +300,27 @@
     .asistencia-form button:hover {
       background: #fff4c0;
       color: #132348;
+    }
+    .asistencia-gracias {
+      background: rgba(26,28,63,0.98);
+      border-radius: 24px;
+      box-shadow: 0 6px 36px 5px #191c3a52;
+      padding: 28px 18px 22px 18px;
+      margin-top: 18px;
+      color: #ffe86b;
+      text-align: center;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: asistenciaPop 0.5s;
+      font-family: 'Quicksand', Arial, sans-serif;
+    }
+    .asistencia-gracias.active {
+      display: flex;
+    }
+    @keyframes asistenciaPop {
+      from { opacity: 0; transform: scale(0.95);}
+      to { opacity: 1; transform: scale(1);}
     }
     .asistencia-gracias h2 {
       color: #ffe86b;
@@ -363,9 +370,11 @@
         height: 44px;
         font-size: 1.6rem;
       }
-      .asistencia-form, .asistencia-gracias {
-        min-width: unset;
-        padding: 24px 6vw 18px 6vw;
+      .asistencia-section {
+        border-radius: 20px;
+        max-width: 97vw;
+        margin: 20px 0 24px 0;
+        padding: 20px 2vw 18px 2vw;
       }
     }
   </style>
@@ -379,33 +388,32 @@
     <div class="countdown" id="countdown">Cargando contador...</div>
     <div class="buttons-row">
       <button class="menu-btn" onclick="scrollToMenu()">Ver menú</button>
-      <button class="asistencia-btn" id="btnAsistencia" onclick="abrirAsistencia()">Confirmar asistencia</button>
+      <button class="asistencia-btn" id="btnAsistencia" onclick="mostrarAsistencia()">Confirmar asistencia</button>
     </div>
   </section>
 
-  <!-- Overlay para modal -->
-  <div id="asistenciaOverlay"></div>
-
-  <!-- Formulario para confirmar asistencia -->
-  <form class="asistencia-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
-    <label for="numBoletas">¿Cuántas boletas compraste?</label>
-    <input type="number" id="numBoletas" name="numBoletas" min="0" max="5" value="0" required>
-    <div id="nombresBoletas"></div>
-    <button type="submit" id="btnConfirmar">Confirmar</button>
-  </form>
-
-  <!-- Mensaje de agradecimiento -->
-  <div class="asistencia-gracias" id="graciasAsistencia">
-    <h2>¡Gracias por confirmar tu asistencia!</h2>
-    <div class="asistencia-info" id="infoAsistente"></div>
-    <img src="logo.png" alt="Logo Institución">
-    <button class="close-btn" onclick="cerrarGracias()">Cerrar</button>
-  </div>
+  <!-- Nueva sección para asistencia -->
+  <section class="asistencia-section oculto" id="asistencia">
+    <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
+    <form class="asistencia-form" id="formAsistencia" onsubmit="return enviarAsistencia(event)">
+      <label for="numBoletas">¿Cuántas boletas compraste?</label>
+      <input type="number" id="numBoletas" name="numBoletas" min="0" max="5" value="0" required>
+      <div id="nombresBoletas"></div>
+      <button type="submit" id="btnConfirmar">Confirmar</button>
+    </form>
+    <div class="asistencia-gracias" id="graciasAsistencia">
+      <h2>¡Gracias por confirmar tu asistencia!</h2>
+      <div class="asistencia-info" id="infoAsistente"></div>
+      <img src="logo.png" alt="Logo Institución">
+      <button class="close-btn" onclick="volverInicio()">Cerrar</button>
+    </div>
+  </section>
 
   <section class="menu-section oculto" id="menu">
     <button class="back-btn" onclick="volverInicio()" title="Volver al inicio">&#8592;</button>
     <h2 class="menu-title">Menú de 7 tiempos</h2>
     <div class="menu-grid">
+      <!-- Tus tarjetas de menú -->
       <div class="menu-card">
         <img src="ECLIPSE.png" alt="Eclipse" class="menu-img">
         <div class="menu-name">ECLIPSE</div>
@@ -444,8 +452,8 @@
     </div>
   </section>
   <script>
-    // Cambia por la URL real de tu endpoint Vercel:
-    const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/api/asistencia";
+    // PON AQUÍ LA URL DE TU PROXY
+    const PROXY_URL = "https://noche-estrellada-proxy.vercel.app/";
 
     function updateCountdown() {
       const eventDate = new Date("2025-06-12T19:00:00");
@@ -466,37 +474,26 @@
     updateCountdown();
 
     function scrollToMenu() {
-      const menuSection = document.getElementById('menu');
-      const bienvenidaSection = document.getElementById('bienvenida');
-      bienvenidaSection.classList.add('oculto');
-      menuSection.classList.remove('oculto');
-      menuSection.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('bienvenida').classList.add('oculto');
+      document.getElementById('asistencia').classList.add('oculto');
+      document.getElementById('menu').classList.remove('oculto');
+      document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+    }
+    function mostrarAsistencia() {
+      document.getElementById('bienvenida').classList.add('oculto');
+      document.getElementById('menu').classList.add('oculto');
+      document.getElementById('asistencia').classList.remove('oculto');
+      document.getElementById('asistencia').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('formAsistencia').reset();
+      generarCamposNombres();
+      document.getElementById('graciasAsistencia').classList.remove('active');
     }
     function volverInicio() {
-      const menuSection = document.getElementById('menu');
-      const bienvenidaSection = document.getElementById('bienvenida');
-      menuSection.classList.add('oculto');
-      bienvenidaSection.classList.remove('oculto');
-      bienvenidaSection.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('menu').classList.add('oculto');
+      document.getElementById('asistencia').classList.add('oculto');
+      document.getElementById('bienvenida').classList.remove('oculto');
+      document.getElementById('bienvenida').scrollIntoView({ behavior: 'smooth' });
     }
-
-    // MODAL asistencia
-    function abrirAsistencia() {
-      document.getElementById('formAsistencia').classList.add('active');
-      document.getElementById('asistenciaOverlay').style.display = "block";
-      document.getElementById('numBoletas').value = 0;
-      generarCamposNombres();
-      document.getElementById('numBoletas').focus();
-    }
-    function cerrarGracias() {
-      document.getElementById('graciasAsistencia').classList.remove('active');
-      document.getElementById('asistenciaOverlay').style.display = "none";
-    }
-    document.getElementById('asistenciaOverlay').onclick = function() {
-      document.getElementById('formAsistencia').classList.remove('active');
-      document.getElementById('graciasAsistencia').classList.remove('active');
-      this.style.display = "none";
-    };
 
     // Dinámico para los nombres
     document.getElementById('numBoletas').addEventListener('input', generarCamposNombres);
@@ -544,7 +541,7 @@
         nombres.push(val);
       }
       if (nombres.length === 0) return false;
-      Promise.all(nombres.map(nombre => 
+      Promise.all(nombres.map(nombre =>
         fetch(PROXY_URL, {
           method: "POST",
           body: JSON.stringify({
@@ -558,8 +555,6 @@
         .then(r => r.json())
       )).then(results => {
         if(results.every(r => r.result === "ok")) {
-          document.getElementById('formAsistencia').classList.remove('active');
-          document.getElementById('asistenciaOverlay').style.display = "none";
           const info = `
             <b>Nombres registrados:</b><br>
             ${nombres.map((n,i) => (i+1) + ". " + n).join('<br>')}
@@ -577,15 +572,6 @@
       });
       return false;
     }
-
-    // ESC para cerrar modales
-    document.addEventListener('keydown', function(e) {
-      if(e.key === "Escape") {
-        cerrarGracias();
-        document.getElementById('formAsistencia').classList.remove('active');
-        document.getElementById('asistenciaOverlay').style.display = "none";
-      }
-    });
   </script>
 </body>
 </html>
